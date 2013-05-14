@@ -6,8 +6,8 @@
   "dependencies": {
     "express": "~3.2.4",
     "config": "~0.4.24",
-    "sequelize-sqlite": "~1.7.0-alpha1",
-    "commander": "~1.1.1"
+    "commander": "~1.1.1",
+    "sequelize": "~1.7.0-alpha1"
   },
   "devDependencies": {},
   "scripts": {

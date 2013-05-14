@@ -1,11 +1,13 @@
 var express = require('express');
 var config = require('config');
 var http = require('http');
+var Sequelize = require('sequelize');
 var pass = require('./lib/passphrase');
 var auth = require('./lib/auth');
+var models = require('./lib/models')
 var app = express();
 
-// Assign middlewares
+// Assign HTTP middlewares
 app.use(express.logger());
 app.use(express.basicAuth(auth.checkUserAuth));
 app.use(express.compress());
@@ -24,9 +26,21 @@ pass.askPassphrase(function(answer) {
 
 	if(answer.trim()) {
 
+		// Define Lynx server encryption passphrase
 		app.set('passphrase', answer);
 
-		// Start listening requests
+		// Initialize Sequelize ORM
+		var sequelize = new Sequelize(
+			config.database.name, 
+			config.database.user, 
+			config.database.password, 
+			config.database.options
+		);
+
+		// Initialize models
+		models.initialize(sequelize);
+
+		// Create HTTP Server & start listening requests
 		var address = config.address === '*' ? '' : config.address;
 		var port = config.port || 80;
 

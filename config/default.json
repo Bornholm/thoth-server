@@ -1,4 +1,10 @@
 {
 	"address": "*",
-	"port": 8888
+	"port": 8888,
+	"database": {
+		"options": {
+			"dialect": "sqlite",
+			"storage": "data/lynx.db"
+		}
+	}
 }
