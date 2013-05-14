@@ -9,7 +9,6 @@ var app = express();
 
 // Assign HTTP middlewares
 app.use(express.logger());
-app.use(express.basicAuth(auth.checkUserAuth));
 app.use(express.compress());
 app.use(express.bodyParser());
 app.use(express.query());
