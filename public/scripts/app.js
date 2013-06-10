@@ -12,7 +12,11 @@
 			templateUrl: 'templates/search.html'
 		});
 
-		//$routeProvider.otherwise({redirectTo: '/bookmarks'});
+		$routeProvider.when('/bookmarks', {
+			templateUrl: 'templates/bookmarks.html'
+		});
+
+		$routeProvider.otherwise({redirectTo: '/bookmarks'});
 
 		$routeProvider.html5Mode = false;
 
