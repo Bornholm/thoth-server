@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="Thoth">
+  <head>
+    <title>Thoth - Keeper of knwoledge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/thoth.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+
+    <div class="sidebar" ng-controller="NavCtrl">
+      <a href='#' id="logo"><img src="img/thoth.svg" />THOTH</a>
+      <ul>
+        <li ng-class="{active: navState.bookmarks}"><a href="#/bookmarks"><i class="icon icon-bookmark icon-white"></i> Favoris</a></li>
+        <li ng-class="{active: navState['new-entry']}"><a href="#/new-entry"><i class="icon icon-plus icon-white"></i> Nouvelle fiche</a></li>
+        <li ng-class="{active: navState.search}"><a href="#/search"><i class="icon icon-search icon-white"></i> Recherche</a></li>
+        <li ng-class="{active: navState.profile}"><a href="#/profile"><i class="icon icon-user icon-white"></i> Profil</a></li>
+        <li ng-class="{active: navState.admin}"><a href="#/admin"><i class="icon icon-wrench icon-white"></i> Administration</a></li>
+      </ul>
+      <ul class="pull-down">
+        <li><a href="#/logout"><i class="icon icon-off icon-white"></i> Se déconnecter</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="container-fluid" ng-view>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="scripts/lib/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+
+  </body>
+</html>

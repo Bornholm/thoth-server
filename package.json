@@ -1,13 +1,14 @@
 {
-  "name": "lynx",
+  "name": "toth",
   "version": "0.0.0",
-  "description": "ERROR: No README.md file found!",
+  "description": "Password management application",
   "main": "app.js",
   "dependencies": {
     "express": "~3.2.4",
     "config": "~0.4.24",
     "commander": "~1.1.1",
-    "sequelize": "~1.7.0-alpha1"
+    "mongoose": "~3.6.11",
+    "mongoose-rbac": "0.0.3"
   },
   "devDependencies": {},
   "scripts": {
@@ -15,6 +16,6 @@
     "start": "node app.js"
   },
   "repository": "",
-  "author": "Bornholm",
+  "author": "William PETIT",
   "license": "AGPL"
 }
