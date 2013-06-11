@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="Thoth">
   <head>
-    <title>Thoth - Keeper of knwoledge</title>
+    <title>Thoth - Keeper of secret knowledge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -11,7 +11,7 @@
   <body>
 
     <div class="sidebar" ng-controller="NavCtrl">
-      <a href='#' id="logo"><img src="img/thoth.svg" />THOTH</a>
+      <a href='#' id="logo"><img src="img/thoth.svg" />THOTH<span class="sub">Keeper of secret knowledge</span></a>
       <ul>
         <li ng-class="{active: navState.bookmarks}"><a href="#/bookmarks"><i class="icon icon-bookmark icon-white"></i> Favoris</a></li>
         <li ng-class="{active: navState['new-entry']}"><a href="#/new-entry"><i class="icon icon-plus icon-white"></i> Nouvelle fiche</a></li>
@@ -32,6 +32,7 @@
     <script type="text/javascript" src="scripts/lib/angular.min.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
     <script type="text/javascript" src="scripts/controllers/bookmarks.js"></script>
+    <script type="text/javascript" src="scripts/controllers/new-entry.js"></script>
 
   </body>
 </html>

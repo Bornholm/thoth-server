@@ -16,6 +16,10 @@
 			templateUrl: 'templates/bookmarks.html'
 		});
 
+		$routeProvider.when('/new-entry', {
+			templateUrl: 'templates/new-entry.html'
+		});
+
 		$routeProvider.otherwise({redirectTo: '/bookmarks'});
 
 		$routeProvider.html5Mode = false;

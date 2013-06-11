@@ -16,6 +16,6 @@
     "start": "node app.js"
   },
   "repository": "",
-  "author": "William PETIT",
+  "author": "William PETIT - Rectorat de l'Académie de Dijon",
   "license": "AGPL"
 }
