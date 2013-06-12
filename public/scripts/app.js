@@ -16,8 +16,8 @@
 			templateUrl: 'templates/bookmarks.html'
 		});
 
-		$routeProvider.when('/new-entry', {
-			templateUrl: 'templates/new-entry.html'
+		$routeProvider.when('/new-record', {
+			templateUrl: 'templates/new-record.html'
 		});
 
 		$routeProvider.otherwise({redirectTo: '/bookmarks'});

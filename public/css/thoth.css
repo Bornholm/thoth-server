@@ -145,9 +145,20 @@ body, html {
 	border: none;
 	width: 100%;
 	height: 100%;
-	margin: -2px 4px;
+	margin: -2px 2px;
 	padding: 0;
 	box-shadow: none;
+}
+
+.uneditable-input div.label {
+	margin: 0px 2px;
+}
+
+.uneditable-input div.label .close {
+	float: none;
+	vertical-align: middle;
+	line-height: 10px;
+	font-size: 18px;
 }
 
 .uneditable-input input[type="text"]:focus {
