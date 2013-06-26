@@ -6,45 +6,59 @@
 
 	var Thoth = angular.module('Thoth', []);
 
-	Thoth.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+	Thoth.config(['$routeProvider', '$locationProvider', '$httpProvider', 
+		function($routeProvider, $locationProvider, $httpProvider) {
 
 		$routeProvider.when('/search', {
 			templateUrl: 'templates/search.html'
 		});
 
-		$routeProvider.when('/bookmarks', {
-			templateUrl: 'templates/bookmarks.html'
+		$routeProvider.when('/login', {
+			templateUrl: 'templates/login.html'
+		});
+
+		$routeProvider.when('/home', {
+			templateUrl: 'templates/home.html'
 		});
 
 		$routeProvider.when('/new-record', {
 			templateUrl: 'templates/new-record.html'
 		});
 
-		$routeProvider.otherwise({redirectTo: '/bookmarks'});
+		$routeProvider.otherwise({redirectTo: '/home'});
 
 		$routeProvider.html5Mode = false;
 
+		// Auth interceptor
+
+		var interceptor = ['$location', '$q', function($location, $q) {
+
+			function success(response) {
+				return response;
+			}
+
+			function error(response) {
+				if(response.status === 401) {
+					$location.path('/login');
+					return $q.reject(response);
+				}else {
+					return $q.reject(response);
+				}
+			}
+ 
+			return function(promise) {
+				return promise.then(success, error);
+			}
+
+		}];
+
+		$httpProvider.responseInterceptors.push(interceptor);
+
 	}]);
 
-	Thoth.controller('NavCtrl', ['$scope', '$location', function($scope, $location) {
-
-		$scope.navState = {
-			bookmarks: false,
-			'new-entry': false,
-			search: false,
-			admin: false,
-			profile: false
-		}
-
-		$scope.$location = $location
-
-		$scope.$watch('$location.path()', function() {
-			var path = $location.path();
-			Object.keys($scope.navState).forEach(function(key) {
-				$scope.navState[key] = (path === '/'+key);
-			});
-		});
-
-	}]);
+	Thoth.run(['$rootScope', '$auth', '$location', function($rootScope, $auth, $location) {
+		$rootScope.$location = $location;
+		$rootScope.$watch('$location.path()', $auth.ping.bind($auth));
+	}])
 
 }(window))

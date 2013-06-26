@@ -4,7 +4,7 @@
 	var angular = w.angular;
 
 	angular.module('Thoth')
-		.controller('BookmarksCtrl', ['$scope', function($scope) {
+		.controller('HomeCtrl', ['$scope', function($scope) {
 
 			$scope.bookmarks = [];
 
@@ -16,7 +16,6 @@
 					desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.'
 				});
 			}
-
 
 		}]);
 

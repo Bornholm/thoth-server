@@ -1,38 +1,35 @@
-var express = require('express');
 var config = require('config');
-var http = require('http');
+var async = require('async');
 var mongoose = require('mongoose');
-var pass = require('./lib/util/passphrase');
-var app = express();
+var bootstrap = require('./lib/bootstrap');
 
-// Assign HTTP middlewares
-app.use(express.logger());
-app.use(express.compress());
-app.use(express.bodyParser());
-app.use(express.query());
-app.use(express.cookieParser());
+var api = {};
 
-// Define HTTP routes
-require('./lib/routes')(app);
+async.applyEachSeries([
+		bootstrap.askPassphrase,
+		bootstrap.initModels,
+		bootstrap.initAuthStrategy,
+		bootstrap.initExpressApp
+	],
+	config, api,
+	function(err) {
 
-app.use(express.static(__dirname + '/public'));
-app.use(express.errorHandler());
+		if(err) throw err;
 
-pass.askPassphrase(function(answer) {
-
-	if(answer.trim()) {
-
-		// Define Toth server encryption passphrase
-		app.set('passphrase', answer);
-
-		var server = http.createServer(app);
-		server.listen(config.web.port, config.web.address, function() {
-			console.log('Server listening on http://'+config.web.address+':'+config.web.port);
+		mongoose.connect(config.database);
+		var db = mongoose.connection;
+		db.on('error', console.error.bind(console));
+		db.once('open', function callback () {
+		  	var http = require('http');
+				var server = http.createServer(api.app);
+				server.listen(config.web.port, config.web.address, function() {
+					console.log('Server listening on http://'+config.web.address+':'+config.web.port);
+				});
 		});
 
-	} else console.error("Passphrase shouldn't be empty. Aborting.");
+	}
 
-});
+);
 
 
 
