@@ -7,10 +7,16 @@
 		"port": 8888
 	},
 
-	"auth": {
-		"strategy": "./lib/util/auth/local",
-		"options": {}
-	},
+	"plugins": [
+		{
+			"path": "./plugins/thoth-local-auth",
+			"options": {
+				"rounds": 8
+			}
+		}
+	],
+
+	"auth": "local",
 
 	"encryption": {
 		"algorithm": "aes256"

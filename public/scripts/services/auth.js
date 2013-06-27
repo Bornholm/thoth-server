@@ -4,9 +4,9 @@
     var angular = w.angular;
 
     angular.module('Thoth')
-        .factory('$auth', ['$http', function($http) {
+        .factory('$auth', ['$http', '$cookieStore', function($http, $cookieStore) {
             return {
-
+                
                 ping: function() {
                     return $http.get('/api/auth/ping');
                 },

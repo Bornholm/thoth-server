@@ -4,10 +4,16 @@
 
 	var angular = w.angular;
 
-	var Thoth = angular.module('Thoth', []);
+	var Thoth = angular.module('Thoth', ['restangular', 'ngCookies']);
 
-	Thoth.config(['$routeProvider', '$locationProvider', '$httpProvider', 
-		function($routeProvider, $locationProvider, $httpProvider) {
+	Thoth.config([
+		'$routeProvider', '$locationProvider', '$httpProvider', 
+		'RestangularProvider',
+		function(
+			$routeProvider, $locationProvider, $httpProvider, 
+			RestangularProvider) {
+
+		RestangularProvider.setBaseUrl('/api');
 
 		$routeProvider.when('/search', {
 			templateUrl: 'templates/search.html'
@@ -25,7 +31,7 @@
 			templateUrl: 'templates/new-record.html'
 		});
 
-		$routeProvider.otherwise({redirectTo: '/home'});
+		$routeProvider.otherwise({redirectTo: '/login'});
 
 		$routeProvider.html5Mode = false;
 

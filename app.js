@@ -1,32 +1,28 @@
 var config = require('config');
 var async = require('async');
-var mongoose = require('mongoose');
 var bootstrap = require('./lib/bootstrap');
+var Hookable = require('./lib/util/hookable');
 
-var api = {};
+var api = new Hookable();
 
 async.applyEachSeries([
 		bootstrap.askPassphrase,
+		bootstrap.initApi,
+		bootstrap.initPlugins,
+		bootstrap.initDatabaseConnection,
 		bootstrap.initModels,
 		bootstrap.initAuthStrategy,
+		bootstrap.createDefaultAdmin,
 		bootstrap.initExpressApp
 	],
 	config, api,
 	function(err) {
-
 		if(err) throw err;
-
-		mongoose.connect(config.database);
-		var db = mongoose.connection;
-		db.on('error', console.error.bind(console));
-		db.once('open', function callback () {
-		  	var http = require('http');
-				var server = http.createServer(api.app);
-				server.listen(config.web.port, config.web.address, function() {
-					console.log('Server listening on http://'+config.web.address+':'+config.web.port);
-				});
+  	var http = require('http');
+		var server = http.createServer(api.app);
+		server.listen(config.web.port, config.web.address, function() {
+			console.log('Server listening on http://'+config.web.address+':'+config.web.port);
 		});
-
 	}
 
 );
