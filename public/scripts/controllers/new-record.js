@@ -4,17 +4,21 @@
 	var angular = w.angular;
 
 	angular.module('Thoth')
-		.controller('NewRecordCtrl', ['$scope', function($scope) {
+		.controller('NewRecordCtrl', ['$scope', 'Restangular', function($scope, R) {
+
+			$scope.save = function() {
+				$scope.record =  R.all('records').post($scope.record);
+			}
 
 			$scope.availableTags = [
-				{label: 'Webpublic'},
-				{label: 'Machine'},
-				{label: 'Root'}
+				'Webpublic',
+				'Machine',
+				'Root'
 			];
 
-			$scope.newRecord = {
+			$scope.record = {
 				label: "Webpublic",
-				tags: [{label: 'Web'}, {label: 'Machine'}],
+				tags: ['Web', 'Machine'],
 				text: "Lorem Ipsum dolor sit amet..."
 			};
 

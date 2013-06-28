@@ -15,9 +15,14 @@
 				case 188: // key == ','  || key == 'Enter'
 				case 13:
 					if(tag.length > 1) {
-						$scope.tags.push({
-							label: evt.keyCode === 188 ? tag.slice(0, -1) : tag
-						});
+						if($scope.label) {
+							var label = evt.keyCode === 188 ? tag.slice(0, -1) : tag;
+							tag = {};
+							tag[$scope.label] = label;
+							$scope.tags.push(tag);
+						} else {
+							$scope.tags.push(evt.keyCode === 188 ? tag.slice(0, -1) : tag);
+						}
 					}
 					input.val('');
 				break;
@@ -25,7 +30,7 @@
 					if(tag.length === 0 && $scope.tags.length) {
 						tag = $scope.tags[$scope.tags.length-1];
 						$scope.tags.pop();
-						input.val(tag.label);
+						input.val($scope.label ? tag[$scope.label] : tag);
 					}
 				break;
 			}
@@ -40,15 +45,16 @@
 				replace: true,
 				scope: {
 					tags: '=ngModel',
-					dataList: '=tagsAvailable'
+					dataList: '=tagsAvailable',
+					label: '=tagsLabel'
 				},
 				template: '<span class="uneditable-input">' +
-					'<div class="label" ng-repeat="t in tags"><span>{{t.label}}</span> '+
+					'<div class="label" ng-repeat="t in tags"><span>{{getTagLabel(t)}}</span> '+
 					'<button class="close" ng-mousedown="removeTag(t)">&times;</button>' + 
 					'</div>' +
 					'<input type="text" list="datalist-tag-input-' + dataListId + '" />' +
 					'<datalist id="datalist-tag-input-' + dataListId++ + '">' +
-					'<option ng-repeat="item in dataList" value="{{item.label}}" />' +
+					'<option ng-repeat="item in dataList" value="{{getTagLabel(t)}}" />' +
 					'</datalist>' +
 					'</span>',
 
@@ -60,8 +66,10 @@
 
 				controller: ['$scope', function($scope) {
 					$scope.removeTag = function(tag) {
-						console.log(tag);
 						$scope.tags.splice($scope.tags.indexOf(tag), 1);
+					}
+					$scope.getTagLabel = function(tag) {
+						return $scope.label ? tag[$scope.label] : tag;
 					}
 				}]
 

@@ -8,11 +8,11 @@ var api = new Hookable();
 async.applyEachSeries([
 		bootstrap.askPassphrase,
 		bootstrap.initApi,
+		bootstrap.initLocalAuthStrategy,
 		bootstrap.initPlugins,
 		bootstrap.initDatabaseConnection,
 		bootstrap.initModels,
 		bootstrap.initAuthStrategy,
-		bootstrap.createDefaultAdmin,
 		bootstrap.initExpressApp
 	],
 	config, api,

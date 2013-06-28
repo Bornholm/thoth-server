@@ -7,14 +7,7 @@
 		"port": 8888
 	},
 
-	"plugins": [
-		{
-			"path": "./plugins/thoth-local-auth",
-			"options": {
-				"rounds": 8
-			}
-		}
-	],
+	"plugins": [],
 
 	"auth": "local",
 
