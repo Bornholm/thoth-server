@@ -19,6 +19,7 @@
 
                 logout: function() {
                     $http.defaults.headers.common.Authorization = '';
+                    $http.get('/api/auth/logout');
                     return this.ping();
                 }
 

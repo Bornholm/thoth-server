@@ -1,7 +1,7 @@
 <div class="row-fluid">
   <h2>Recherche</h2>
-</div>search
-<div class="row-fluid">
+</div>
+<div class="row-fluid" ng-controller="SearchCtrl">
   <div class="span12">
     <table class="table">
       <thead>
@@ -12,10 +12,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>0</td>
-          <td>Webpublic</td>
-          <td><a href="#/edit/00000">Editer</a>
+        <tr ng-repeat="r in records">
+          <td ng-bind="$$index">0</td>
+          <td ng-bind="r.label">Webpublic</td>
+          <td><a ng-href="#/edit/{{r._id}}">Editer</a>
         </tr>
       </tbody>
     </table>
