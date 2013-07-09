@@ -20,8 +20,7 @@
                 logout: function() {
                     var encoded = w.btoa('bye:bye');
                     $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
-                    $http.get('/api/auth/logout');
-                    return this.ping();
+                    return $http.get('/api/auth/logout');
                 }
 
             };
