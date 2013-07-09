@@ -1,9 +1,9 @@
 <div class="row-fluid">
-  <h2>Nouvel enregistrement</h2>
+  <h2><span ng-show="record._id">Editer l'</span><span ng-hide="record._id">Nouvel </span>enregistrement</h2>
 </div>
-<div class="row-fluid" ng-controller="NewRecordCtrl">
+<div class="row-fluid">
   <div class="span12">
-    <form class="form-horizontal">
+    <div class="form-horizontal">
 
       <div class="control-group">
         <label class="control-label">Label</label>
@@ -20,7 +20,7 @@
       <div class="control-group">
         <label class="control-label">Notes</label>
         <div class="controls">
-          <textarea ng-bind="record.text"></textarea>
+          <textarea ng-model="record.text" rows="10"></textarea>
         </div>
       </div>
       <div class="control-group">
@@ -29,7 +29,7 @@
         </div>
       </div>
 
-    </form>
+    </div>
   </div>
 </div>
 

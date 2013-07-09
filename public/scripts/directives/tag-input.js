@@ -65,6 +65,7 @@
 				},
 
 				controller: ['$scope', function($scope) {
+					$scope.tags = $scope.tags || [];
 					$scope.removeTag = function(tag) {
 						$scope.tags.splice($scope.tags.indexOf(tag), 1);
 					}

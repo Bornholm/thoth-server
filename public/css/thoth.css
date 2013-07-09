@@ -18,8 +18,12 @@ body, html {
 	font-family: 'Droid Sans', 'Ubuntu Sans', 'sans-serif'
 }
 
-#logo {
+.title {
 	font-family: 'Gloria Hallelujah', cursive;
+	color: #302814 !important;
+}
+
+.logo {
 	display: block;
 	font-size: 2.5em;
 	padding: 0px 10px;
@@ -28,15 +32,15 @@ body, html {
 	filter: dropshadow(color=#ffffff, offx=1, offy=1);
 }
 
-#logo:hover {
+.logo:hover {
 	text-decoration: none;
 }
 
-#logo img {
+.logo img {
 	height: 70px;
 }
 
-#logo .sub {
+.logo .sub {
 	font-size: 10px;
 	position: absolute;
 	width: 145px;
@@ -139,7 +143,7 @@ body, html {
 }
 
 /* 
- * New Entry
+ * Record
  */
 
 .uneditable-input input[type="text"] {
@@ -171,9 +175,14 @@ body, html {
  * Login
  */
 
+#login .title {
+	font-size: 1.5em;
+}
+
 #login .logo {
-	position: absolute;
-	height: 120px;
+	height: 140px;
+	float: left;
+	margin-right: 20px;
 }
 
 #login form {
@@ -185,8 +194,34 @@ body, html {
 }
 
 #login-container {
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	height: 180px;
 	margin-top: -120px;
+	left: 50%;
+	width: 400px;
+	margin-left: -200px;
 }
+
+/* 
+ * Notifications
+ */
+
+ #notifications {
+ 	padding: 10px;
+ 	position: fixed;
+ 	top: 10px;
+ 	left: 50%;
+ 	width: 50%;
+ 	margin-left: -25%;
+ }
+
+ #notifications ul {
+ 	list-style: none;
+ 	margin: 0;
+ 	padding: 0;
+ }
+
+ #notifications ul li {
+ 	margin-bottom: 5px;
+ }

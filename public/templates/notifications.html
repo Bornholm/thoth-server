@@ -1,0 +1,7 @@
+<div id="notifications" ng-controller="NotificationsCtrl">
+	<ul>
+		<li class="alert" ng-class="n.class" ng-repeat="n in notifications">
+			<strong ng-bind="n.title"></strong>&nbsp;<span ng-bind="n.message"></span>
+		</li>
+	</ul>
+</div>

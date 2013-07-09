@@ -27,8 +27,14 @@
 			templateUrl: 'templates/home.html'
 		});
 
-		$routeProvider.when('/new-record', {
-			templateUrl: 'templates/new-record.html'
+		$routeProvider.when('/record/:recordId/:action', {
+			templateUrl: 'templates/record.html',
+			controller: 'RecordCtrl'
+		});
+
+		$routeProvider.when('/record/:action', {
+			templateUrl: 'templates/record.html',
+			controller: 'RecordCtrl'
 		});
 
 		$routeProvider.otherwise({redirectTo: '/login'});

@@ -11,8 +11,9 @@
   <body>
     <ng-include src="'templates/sidebar.html'"></ng-include>
     <div class="content">
-      <div class="container-fluid" ng-view>
-      </div>
+        <div class="container-fluid" ng-view>
+        </div>
+        <ng-include src="'templates/notifications.html'"></ng-include>
     </div>
     <!-- Scripts -->
     <script type="text/javascript" src="scripts/lib/lodash.min.js"></script>
@@ -23,6 +24,7 @@
     <script type="text/javascript" src="scripts/thoth.js"></script>
     <!-- Services -->
     <script type="text/javascript" src="scripts/services/auth.js"></script>
+    <script type="text/javascript" src="scripts/services/notifications.js"></script>
     <!-- Directives -->
     <script type="text/javascript" src="scripts/directives/tag-input.js"></script>
     <!-- Controllers -->
@@ -30,6 +32,7 @@
     <script type="text/javascript" src="scripts/controllers/sidebar.js"></script>
     <script type="text/javascript" src="scripts/controllers/login.js"></script>
     <script type="text/javascript" src="scripts/controllers/home.js"></script>
-    <script type="text/javascript" src="scripts/controllers/new-record.js"></script>
+    <script type="text/javascript" src="scripts/controllers/record.js"></script>
+    <script type="text/javascript" src="scripts/controllers/notifications.js"></script>
   </body>
 </html>

@@ -7,7 +7,7 @@
 
 			$scope.navState = {
 				home: false,
-				'new-record': false,
+				record: false,
 				search: false,
 				admin: false,
 				profile: false,
@@ -19,7 +19,8 @@
 			$scope.$watch('$location.path()', function() {
 				var path = $location.path();
 				Object.keys($scope.navState).forEach(function(key) {
-					$scope.navState[key] = (path === '/'+key);
+					var baseIndex = path.indexOf('/', 1);
+					$scope.navState[key] = (path.slice(0, !~baseIndex ? path.length : baseIndex) === '/'+key);
 				});
 			});
 
