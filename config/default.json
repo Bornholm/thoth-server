@@ -12,7 +12,8 @@
 	"auth": "local",
 
 	"encryption": {
-		"algorithm": "aes256"
+		"algorithm": "aes256",
+		"oldHmac": ""
 	}
 	
 }

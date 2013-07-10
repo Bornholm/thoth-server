@@ -7,6 +7,7 @@ var api = new Hookable();
 
 async.applyEachSeries([
 		bootstrap.askPassphrase,
+		bootstrap.checkPreviousPassphrase,
 		bootstrap.initApi,
 		bootstrap.initLocalAuthStrategy,
 		bootstrap.initPlugins,
