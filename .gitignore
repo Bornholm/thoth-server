@@ -2,3 +2,4 @@ node_modules/
 *.log
 config/runtime.json
 config/wpetit.json
+config/david.json

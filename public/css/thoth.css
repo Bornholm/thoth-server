@@ -155,7 +155,8 @@ body, html {
 	box-shadow: none;
 }
 
-.uneditable-input div.label {
+/*.uneditable-input div.label {*/
+div.label {
 	margin: 0px 2px;
 }
 
@@ -225,3 +226,4 @@ body, html {
  #notifications ul li {
  	margin-bottom: 5px;
  }
+
