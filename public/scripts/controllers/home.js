@@ -4,7 +4,7 @@
 	var angular = w.angular;
 
 	angular.module('Thoth')
-		.controller('HomeCtrl', ['$scope', 'Restangular', function($scope, R) {
+		.controller('HomeCtrl', ['$scope', function($scope) {
 
 			$scope.bookmarks = [];
 

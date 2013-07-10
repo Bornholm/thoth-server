@@ -4,16 +4,11 @@
 
 	var angular = w.angular;
 
-	var Thoth = angular.module('Thoth', ['restangular', 'ngCookies']);
+	var Thoth = angular.module('Thoth', ['ngResource', 'ngCookies']);
 
 	Thoth.config([
-		'$routeProvider', '$locationProvider', '$httpProvider', 
-		'RestangularProvider',
-		function(
-			$routeProvider, $locationProvider, $httpProvider, 
-			RestangularProvider) {
-
-		RestangularProvider.setBaseUrl('/api');
+		'$routeProvider', '$locationProvider', '$httpProvider',
+		function($routeProvider, $locationProvider, $httpProvider) {
 
 		$routeProvider.when('/search', {
 			templateUrl: 'templates/search.html'

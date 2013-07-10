@@ -5,10 +5,10 @@
 
 	angular.module('Thoth')
 		.controller('RecordCtrl', [
-			'$scope', 'Restangular', '$routeParams',
+			'$scope', '$api', '$routeParams',
 			'$location', '$notifications',
 			function(
-				$scope, R, $routeParams,
+				$scope, $api, $routeParams,
 				$location, $notifs
 			) {
 
@@ -16,16 +16,14 @@
 			var recordId = $routeParams.recordId;
 			switch(action) {
 				case 'new':
-					$scope.record = {};
+					$scope.record = new $api.Record();
 					break;
 				case 'edit':
 				case 'view':
 					if(recordId) {
-						R.one('records', recordId)
-							.get()
-							.then(function(data) {
-								$scope.record = data;
-							});
+						$api.Record.get({id: recordId}, function(r) {
+							$scope.record = r;
+						});
 					} else $location.path('/record/new');
 					break;
 				default:
@@ -37,15 +35,12 @@
 
 				function saveHandler() {
 					$notifs.add('Sauvegardé !', '', $notifs.SUCCESS);
-					$scope.record = {};
 				}
 
 				if(isNew) {
-					R.all('records')
-						.post($scope.record)
-						.then(saveHandler);
+					$scope.record.$save(saveHandler);
 				} else {
-					R.one('records', $scope.record._id)
+					$scope.record.$update(saveHandler);
 				}
 				
 			}
