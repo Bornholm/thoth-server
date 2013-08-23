@@ -1,0 +1,31 @@
+{
+  "LOGIN_PAGE": {
+    "YOUR_USERNAME": "Your username",
+    "YOUR_PASSWORD": "Your password",
+    "USER": "User",
+    "PASSWORD": "Password",
+    "LOG_IN": "Log in"
+  },
+  "NAVBAR": {
+    "NAVBAR.TOGGLE_NAV": "Toggle navigation",
+    "LOG_OUT": "Log out",
+    "SEARCH": "Search",
+    "PROFILE": "Profile",
+    "NEW_RECORD": "New Record",
+    "ADMIN": "Admin",
+    "RECORD_SEARCH": "Search for records..."
+  },
+  "RECORD_PAGE": {
+    "SAVE_RECORD": "Save",
+    "RECORD_SAVED": "Saved",
+    "LABEL": "Label",
+    "TAGS": "Tags",
+    "TEXT": "Text"
+  },
+  "HOME_PAGE": {
+    "LABEL": "Label",
+    "TAGS": "Tags",
+    "ACTIONS": "Actions",
+    "ACTIONS_AVAILABLE": "See/Edit/Delete"
+  }
+}

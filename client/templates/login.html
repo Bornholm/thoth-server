@@ -1,0 +1,19 @@
+<div class="row" ng-controller="LoginCtrl">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form role="form">
+          <div class="form-group">
+            <label for="usernameInput" translate="LOGIN_PAGE.USER"></label>
+            <input ng-model="username" type="text" class="form-control" id="usernameInput" placeholder="{{'LOGIN_PAGE.YOUR_USERNAME' | translate}}">
+          </div>
+          <div class="form-group">
+            <label for="passwordInput" translate="LOGIN_PAGE.PASSWORD"></label>
+            <input ng-model="password" type="password" class="form-control" id="passwordInput" placeholder="{{'LOGIN_PAGE.YOUR_PASSWORD' | translate}}">
+          </div>
+          <button ng-disabled="!password || !username" ng-click="tryLogin(username, password)" class="btn pull-right" translate="LOGIN_PAGE.LOG_IN"></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

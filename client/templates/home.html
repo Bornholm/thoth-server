@@ -1,0 +1,24 @@
+<div class="row" ng-controller="HomeCtrl">
+	<div class="lg-md-12">
+    <div class="table-responsive">
+      <table class="table table-hover table-responsive">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th translate="HOME_PAGE.LABEL"></th>
+            <th translate="HOME_PAGE.TAGS"></th>
+            <th translate="HOME_PAGE.ACTIONS"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="record in records">
+            <td ng-bind="$index"></td>
+            <td ng-bind="record.label"></td>
+            <td ng-bind="record.tags"></td>
+            <td><a ng-href="#/record/{{record._id}}/view" translate="HOME_PAGE.ACTIONS_AVAILABLE"></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

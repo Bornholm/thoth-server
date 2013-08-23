@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="Thoth">
+  <head>
+    <title>Thoth - Keeper of secret knowledge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Style -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/thoth.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="bower_components/bootstrap/assets/js/html5shiv.js"></script>
+      <script src="bower_components/bootstrap/assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <ng-include src="'templates/navbar.html'"></ng-include>
+    <div id="content" class="container" ng-view></div>
+    <ng-include src="'templates/notifications.html'"></ng-include>
+    <!-- Scripts -->
+    <script type="text/javascript" src="bower_components/lodash/lodash.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <!-- Modules -->
+    <script type="text/javascript" src="bower_components/angular-translate/angular-translate.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate/angular-translate.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate/angular-translate.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="scripts/thoth.js"></script>
+    <!-- Services -->
+    <script type="text/javascript" src="scripts/services/auth.js"></script>
+    <script type="text/javascript" src="scripts/services/notifications.js"></script>
+    <script type="text/javascript" src="scripts/services/api.js"></script>
+    <!-- Directives -->
+    <script type="text/javascript" src="scripts/directives/tag-input.js"></script>
+    <!-- Controllers -->
+    <script type="text/javascript" src="scripts/controllers/navbar.js"></script>
+    <script type="text/javascript" src="scripts/controllers/search.js"></script>
+    <script type="text/javascript" src="scripts/controllers/login.js"></script>
+    <script type="text/javascript" src="scripts/controllers/home.js"></script>
+    <script type="text/javascript" src="scripts/controllers/record.js"></script>
+    <script type="text/javascript" src="scripts/controllers/notifications.js"></script>
+  </body>
+</html>

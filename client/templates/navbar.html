@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default navbar-fixed-top ng-cloak" role="navigation" ng-controller="NavBarCtrl">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only" translate="NAVBAR.TOGGLE_NAV"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/">
+        <img src="img/logo.svg" class="logo" />
+        Thoth
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" ng-show="isNavVisible">
+      <ul class="nav navbar-nav" ng-show="isNavVisible">
+        <li ng-repeat="navItem in nav" ng-show="navItem.isVisible" ng-class="{'active': navItem.isActive}" >
+          <a ng-href="{{navItem.href}}">
+            <span class="glyphicon" ng-class="navItem.icon"></span>
+            <span translate="{{navItem.label}}"></span>
+          </a>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search" ng-show="isNavVisible">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="{{'NAVBAR.RECORD_SEARCH' | translate}}">
+        </div>
+        <button type="submit" class="btn btn-default" translate="NAVBAR.SEARCH"></button>
+      </form>
+      <p class="navbar-text navbar-right" ng-show="isNavVisible">
+        <a href="#" class="navbar-link" ng-click="logout()" translate="NAVBAR.LOG_OUT"></a>
+      </p>
+    </div>
+  </div>
+</nav>

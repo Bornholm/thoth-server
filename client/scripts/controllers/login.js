@@ -15,6 +15,7 @@
 			$scope.tryLogin = function(username, password) {
 				$auth.login(username, password)
 					.then(function() {
+						$scope.$emit('login');
 						$location.path('/home')
 					}, function(err) {
 						if(err.status === 401) {

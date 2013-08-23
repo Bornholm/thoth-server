@@ -1,0 +1,9 @@
+{
+  "LOGIN_PAGE": {
+    "YOUR_USERNAME": "Votre nom d'utilisateur",
+    "YOUR_PASSWORD": "Votre mot de passe",
+    "USER": "Utilisateur",
+    "PASSWORD": "Mot de passe",
+    "LOG_IN": "Se connecter"
+  }
+}

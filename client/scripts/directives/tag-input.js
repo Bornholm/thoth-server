@@ -42,26 +42,32 @@
 			return {
 				restrict: 'E',
 				require: 'ngModel',
-				replace: true,
 				scope: {
 					tags: '=ngModel',
 					dataList: '=tagsAvailable',
 					label: '=tagsLabel'
 				},
-				template: '<span class="uneditable-input">' +
-					'<div class="label" ng-repeat="t in tags"><span>{{getTagLabel(t)}}</span> '+
+				template: 
+					'<table>' +
+					'<tbody>' +
+					'<tr>' +
+					'<td>' +
+					'<div class="label label-default" ng-repeat="t in tags"><span>{{getTagLabel(t)}}</span> '+
 					'<button class="close" ng-mousedown="removeTag(t)">&times;</button>' + 
 					'</div>' +
-					'<input type="text" list="datalist-tag-input-' + dataListId + '" />' +
+					'</td>' +
+					'<td class="real-input">' +
+					'<input type="text" ng-model="tagsText" list="datalist-tag-input-' + dataListId + '" />' +
 					'<datalist id="datalist-tag-input-' + dataListId++ + '">' +
 					'<option ng-repeat="item in dataList" value="{{getTagLabel(t)}}" />' +
 					'</datalist>' +
-					'</span>',
-
+					'</td>' +
+					'</tr>' +
+					'</tbody>' +
+					'</tbody>',
 				link: function(scope, iElement) {
-					$(iElement)
-						.find('input')
-						.keyup(onTagChange.bind(scope));
+					var input = $(iElement).find('input');
+					input.keyup(onTagChange.bind(scope));
 				},
 
 				controller: ['$scope', function($scope) {

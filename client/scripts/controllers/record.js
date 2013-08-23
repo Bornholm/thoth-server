@@ -14,15 +14,18 @@
 
 			var action = $scope.action = $routeParams.action;
 			var recordId = $routeParams.recordId;
+
 			switch(action) {
 				case 'new':
 					$scope.record = new $api.Record();
+					startWatchingChange();
 					break;
 				case 'edit':
 				case 'view':
 					if(recordId) {
-						$api.Record.get({id: recordId}, function(r) {
+						$scope.record = $api.Record.get({id: recordId}, function(r) {
 							$scope.record = r;
+							startWatchingChange();
 						});
 					} else $location.path('/record/new');
 					break;
@@ -30,11 +33,33 @@
 					$location.path('/record/new');
 			}
 
+			var unwatch;
+
+			function detectModification(newVal, oldVal) {
+				if(oldVal !== newVal) {
+					$scope.saveRequired = true;
+				}
+			};
+			
+			function startWatchingChange() {
+				unwatch = $scope.$watch(
+					'record.label + record.tags + record.text',
+					detectModification
+				);
+			}
+
 			$scope.save = function() {
-				var isNew = !$scope.record._id;
+
+				var isNew = !('_id' in $scope.record);
 
 				function saveHandler() {
 					$notifs.add('Sauvegardé !', '', $notifs.SUCCESS);
+					$scope.saveRequired = false;
+					startWatchingChange();
+				}
+
+				if(typeof unwatch === 'function') {
+					unwatch();
 				}
 
 				if(isNew) {
