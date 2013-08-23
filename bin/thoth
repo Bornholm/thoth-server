@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
 var program = require('commander');
+var Thoth = require('../lib/thoth');
+
+var app = new Thoth();
 
 program
 	.version('0.0.0')
@@ -21,75 +24,26 @@ if(program.config) {
 }
 
 /*
- * Commands 
+ * Execute task
  */
 
-var commands = {};
+var taskName = program.args[0];
 
-commands['create-admin'] = function createAdmin() {
+if(!taskName) {
+	return program.help();
+}
 
-	var Hookable = require('../lib/util/hookable');
-	var bootstrap = require('../lib/bootstrap');
-	var config = require('config');
-	var async = require('async');
-	var User = require('../lib/models/user');
+var task;
 
-	var api = new Hookable();
+try {
+	task = require('./tasks/'+taskName);
+} catch(err) {
+	console.log('Couldn\'t load task: ' + taskName);
+}
 
-	console.log('Creating new admin account...')
-	async.waterfall([
-		bootstrap.initApi.bind(null, config, api),
-		bootstrap.initLocalAuthStrategy.bind(null, config, api),
-		bootstrap.initPlugins.bind(null, config, api),
-		bootstrap.initDatabaseConnection.bind(null, config, api),
-		bootstrap.initModels.bind(null, config, api),
-		bootstrap.initAuthStrategy.bind(null, config, api),
-		function askAdminUsername(cb) {
-			program.prompt('Username: ', cb.bind(null, null));
-		},
-		function askAdminPassword(username, cb) {
-			program.password('Password: ', '*', cb.bind(null, null, username));
-		},
-		function askAdminPassword2ndTime(username, password, cb) {
-			program.password('Password (just to be sure): ', '*', function(password2) {
-				if(password !== password2) return cb(new Error('Passwords mismatch !'));
-				cb(null, username, password);
-			});
-		},
-		function confirm(username, password, cb) {
-			var msg = 'Will create new admin account ' +
-				username + '/' + password.replace(/./g, '*') +
-				'. Continue (y/n) ? ';
-			program.confirm(msg, function(ok) {
-				if(ok) return cb(null, username, password);
-				console.log('Aborting...');
-				process.exit();
-			});
-		},
-		function createAdminUser(username, password, cb) {
-			var user = new User();
-			user.auth.local = {
-				password: password,
-				username: username
-			};
-			user.addPermission('*', '*');
-			user.markModified('auth');
-			user.save(cb);
-		}
-	], function(err) {
-		if(err) throw err;
-		console.log('Done !');
-		process.exit();
-	});
-
-};
-
-/*
- * Parse commands
- */
-
-var c = program.args[0];
-if(c && commands[c]) {
-	commands[c]();
-} else program.help();
+if(typeof task === 'function') {
+	return task.call(null, app, program);
+} else {
+	console.log('Invalid task: ' + taskName);
+}
 

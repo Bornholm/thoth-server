@@ -1,32 +1,12 @@
-var config = require('config');
-var async = require('async');
-var bootstrap = require('./lib/bootstrap');
-var Hookable = require('./lib/util/hookable');
+var Thoth = require('./lib/thoth');
+var app = new Thoth();
 
-var api = new Hookable();
-
-async.applyEachSeries([
-		bootstrap.askPassphrase,
-		bootstrap.checkPreviousPassphrase,
-		bootstrap.initApi,
-		bootstrap.initLocalAuthStrategy,
-		bootstrap.initPlugins,
-		bootstrap.initDatabaseConnection,
-		bootstrap.initModels,
-		bootstrap.initAuthStrategy,
-		bootstrap.initExpressApp
-	],
-	config, api,
-	function(err) {
-		if(err) throw err;
-  	var http = require('http');
-		var server = http.createServer(api.app);
-		server.listen(config.web.port, config.web.address, function() {
-			console.log('Server listening on http://'+config.web.address+':'+config.web.port);
-		});
+app.startWebServer(function(err) {
+	if(err) {
+		app.logger.error('Error', err.stack);
+		process.exit(1);
 	}
-
-);
+});
 
 
 
