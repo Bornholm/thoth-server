@@ -25,5 +25,8 @@
     "angular-translate": "~1.0.2",
     "angular-translate-loader-static-files": "~0.1.4",
     "angular-translate-storage-local": "~0.1.4"
+  },
+  "resolutions": {
+    "angular": "1.0.7"
   }
 }

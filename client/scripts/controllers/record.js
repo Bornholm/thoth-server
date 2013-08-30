@@ -34,7 +34,6 @@
 			}
 
 			var unwatch;
-
 			function detectModification(newVal, oldVal) {
 				if(oldVal !== newVal) {
 					$scope.saveRequired = true;
@@ -48,26 +47,22 @@
 				);
 			}
 
+			function saveHandler() {
+				$notifs.add('Sauvegardé !', '', $notifs.SUCCESS);
+				$scope.saveRequired = false;
+				startWatchingChange();
+			}
+
 			$scope.save = function() {
-
 				var isNew = !('_id' in $scope.record);
-
-				function saveHandler() {
-					$notifs.add('Sauvegardé !', '', $notifs.SUCCESS);
-					$scope.saveRequired = false;
-					startWatchingChange();
-				}
-
 				if(typeof unwatch === 'function') {
 					unwatch();
 				}
-
 				if(isNew) {
 					$scope.record.$save(saveHandler);
 				} else {
 					$scope.record.$update(saveHandler);
 				}
-				
 			}
 
 			$scope.availableTags = [

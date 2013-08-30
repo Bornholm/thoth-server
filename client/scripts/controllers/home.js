@@ -6,8 +6,11 @@
 	angular.module('Thoth')
 		.controller('HomeCtrl', [
 			'$scope', '$api',
-			function($scope, $api) {
-				$scope.records = $api.Record.query();
-		}]);
+      '$location',
+			function($scope, $api, $location) {
+        var search = $location.search();
+				$scope.records = $api.Record.query(search);
+		  }
+    ]);
 
 }(window))

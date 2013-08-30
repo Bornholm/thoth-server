@@ -17,6 +17,15 @@
                 }
             );
 
+            api.User = $resource(
+                rootUrl + '/users/:id',
+                {'id': '@_id'},
+                {
+                    update: {method: 'PUT'},
+                    me: {method: 'GET', params: {'id': 'me'}}
+                }
+            );
+
             return api;
         }
     ]);

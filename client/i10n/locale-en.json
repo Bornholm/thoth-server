@@ -27,5 +27,13 @@
     "TAGS": "Tags",
     "ACTIONS": "Actions",
     "ACTIONS_AVAILABLE": "See/Edit/Delete"
+  },
+  "PROFILE_PAGE": {
+    "SAVE_PROFILE": "Save",
+    "PROFILE_SAVED": "Saved",
+    "EMAIL": "Email",
+    "YOUR_EMAIL": "Your email",
+    "NAME": "Name",
+    "YOUR_NAME": "Your name"
   }
 }

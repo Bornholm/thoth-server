@@ -14,9 +14,12 @@
 
 			$scope.tryLogin = function(username, password) {
 				$auth.login(username, password)
-					.then(function() {
-						$scope.$emit('login');
-						$location.path('/home')
+					.then(function(user) {
+						if($scope.nextUrl) {
+							$location.url($scope.nextUrl);
+						} else {
+							$location.path('/home');
+						}
 					}, function(err) {
 						if(err.status === 401) {
 							$notifs.add('Erreur', 'Identifiant ou mot de passe invalide.', $notifs.WARNING);
@@ -25,11 +28,6 @@
 						}
 					});
 			};
-
-			// Auto login 
-			$auth.ping().then(function() {
-				$location.path('/home')
-			});
 
 		}]);
 

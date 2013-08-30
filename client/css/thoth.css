@@ -37,7 +37,7 @@ tag-input input {
  border: none;
  margin: -2px 2px;
  padding: 0;
- display: table-cell;
+ width: 100%;
 }
 
 tag-input .label {

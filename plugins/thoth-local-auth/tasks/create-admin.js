@@ -5,14 +5,6 @@ module.exports = exports = function(app, program) {
   console.log('Creating new admin account...');
 
   async.waterfall([
-    function initApp(next) {
-      app.initialize(function(err) {
-        if(err) {
-          return next(err);
-        }
-        return next();
-      });
-    },
     function askAdminUsername(next) {
       program.prompt('Username: ', next.bind(null, null));
     },
@@ -46,9 +38,8 @@ module.exports = exports = function(app, program) {
         password: password,
         username: username
       };
-      user.addPermission('*', '*');
       user.markModified('auth');
-      user.save(next);
+      user.addRole('admin', next);
     }
   ],function(err) {
     if(err) {

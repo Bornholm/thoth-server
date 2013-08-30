@@ -6,10 +6,19 @@
   angular.module('Thoth')
     .controller('NavBarCtrl', [
       '$scope', '$rootScope',
-      '$auth', '$translate',
-      function($scope, $rootScope, $auth, $translate) {
+      '$auth', '$api',
+      '$translate', '$location',
+      function($scope, $rootScope, $auth, $api, $translate, $location) {
 
       $scope.isNavVisible = false;
+
+      var adminItem = {
+        label: 'NAVBAR.ADMIN',
+        icon: 'glyphicon-wrench',
+        href: '#/admin',
+        isVisible: false,
+        isActive: false
+      };
 
       $scope.nav = [
         {
@@ -22,17 +31,11 @@
         {
           label: 'NAVBAR.PROFILE',
           icon: 'glyphicon-user',
-          href: '#/profile',
+          href: '#/profile/me',
           isVisible: true,
           isActive: false
         },
-        {
-          label: 'NAVBAR.ADMIN',
-          icon: 'glyphicon-wrench',
-          href: '#/admin',
-          isVisible: false,
-          isActive: false
-        }
+        adminItem
       ];
 
       $rootScope.$on('login', function() {
@@ -43,6 +46,21 @@
         $scope.isNavVisible = false;
         $auth.logout();
       };
+
+      $scope.search = $location.search().search;
+      $scope.doSearch = function() {
+        $location.path('/home').search({search: $scope.search});
+      };
+
+      $scope.$auth = $auth;
+      $scope.$watch('$auth.user', function(user) {
+        if(user && user.roles) {
+          var isAdmin = !!~user.roles.indexOf('admin');
+          adminItem.isVisible = isAdmin;
+        } else {
+          adminItem.isVisible = false;
+        }
+      });
 
     }]);
 

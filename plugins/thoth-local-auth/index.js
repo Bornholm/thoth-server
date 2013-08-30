@@ -9,14 +9,14 @@ module.exports = exports = {
 
     User.schema.pre('save', function(next) {
       var user = this;
-      var password = user.auth.local.password;
-      if(password) {
-        bcrypt.hash(password, opts.rounds || 8, function(err, hash) {
+      var local = user.auth.local;
+      if(local) {
+        bcrypt.hash(local.password, opts.rounds || 8, function(err, hash) {
           if(err) {
             return next(err);
           }
-          delete user.auth.local.password;
-          user.auth.local.hash = hash;
+          delete local.password;
+          local.hash = hash;
           user.markModified('auth');
           next();
         })
@@ -57,6 +57,12 @@ module.exports = exports = {
       register: function(username, password, cb) {}
 
     });
+
+    api.tasks.registerTask(
+      'local:create-admin',
+      require('./tasks/create-admin'),
+      'create a new admin account'
+    );
 
     process.nextTick(next);
     

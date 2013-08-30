@@ -3,47 +3,5 @@
 var program = require('commander');
 var Thoth = require('../lib/thoth');
 
-var app = new Thoth();
-
-program
-	.version('0.0.0')
-	.usage('[options] <command>')
-	.option('-c, --config <dir>', 'load config from directory')
-	.parse(process.argv)
-
-program.on('--help', function() {
-		console.log('  Commands:');
-		console.log('');
-		console.log('    create-admin	create an admin account with local password')
-		console.log('');
-});
-
-if(program.config) {
-	var path = require('path');
-	process.env.NODE_CONFIG_DIR = path.resolve(program.config);
-}
-
-/*
- * Execute task
- */
-
-var taskName = program.args[0];
-
-if(!taskName) {
-	return program.help();
-}
-
-var task;
-
-try {
-	task = require('./tasks/'+taskName);
-} catch(err) {
-	console.log('Couldn\'t load task: ' + taskName);
-}
-
-if(typeof task === 'function') {
-	return task.call(null, app, program);
-} else {
-	console.log('Invalid task: ' + taskName);
-}
+new Thoth().cli();
 

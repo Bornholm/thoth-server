@@ -16,17 +16,18 @@
 			$routeProvider, $locationProvider, $httpProvider,
 			$translateProvider
 		) {
-
-			$routeProvider.when('/search', {
-				templateUrl: 'templates/search.html'
-			});
-
+			
 			$routeProvider.when('/login', {
 				templateUrl: 'templates/login.html'
 			});
 
 			$routeProvider.when('/home', {
 				templateUrl: 'templates/home.html'
+			});
+
+			$routeProvider.when('/profile/:id', {
+				templateUrl: 'templates/profile.html',
+				controller: 'ProfileCtrl'
 			});
 
 			$routeProvider.when('/record/:recordId/:action', {
@@ -39,7 +40,7 @@
 				controller: 'RecordCtrl'
 			});
 
-			$routeProvider.otherwise({redirectTo: '/login'});
+			$routeProvider.otherwise({redirectTo: '/home'});
 
 			$routeProvider.html5Mode = false;
 
@@ -53,7 +54,7 @@
 
 				function error(response) {
 					if(response.status === 401) {
-						$location.path('/login');
+						$location.url('/login');
 						return $q.reject(response);
 					}else {
 						return $q.reject(response);
@@ -78,9 +79,18 @@
 
 	}]);
 
-	Thoth.run(['$rootScope', '$auth', '$location', function($rootScope, $auth, $location) {
-		$rootScope.$location = $location;
-		$rootScope.$watch('$location.path()', $auth.ping.bind($auth));
-	}])
+	Thoth.run([
+		'$rootScope', '$auth', '$location', 
+		function($rootScope, $auth, $location) {
+
+			$rootScope.$location = $location;
+			$rootScope.$watch('$location.path()', $auth.ping.bind($auth));
+
+			if($location.path() !== '/login') {
+				$rootScope.nextUrl = $location.url();
+			}
+
+		}
+	]);
 
 }(window))

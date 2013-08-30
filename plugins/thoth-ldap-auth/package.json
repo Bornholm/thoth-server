@@ -1,15 +1,14 @@
 {
-  "name": "thoth-local-auth",
+  "name": "thoth-ldap-auth",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Bornholm",
+  "author": "William PETIT <william.petit@ac-dijon.fr>",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "~0.7.6",
-    "async": "~0.2.9"
+    "ldapjs": "~0.6.3"
   }
 }

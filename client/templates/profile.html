@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-12">
+    <button ng-disabled="!saveRequired" ng-class="{'btn-default': !saveRequired, 'btn-success': saveRequired}" class="btn pull-right" ng-click="save()">
+      <span ng-show="saveRequired">
+        <span translate="PROFILE_PAGE.SAVE_PROFILE"></span> <span class="glyphicon glyphicon-floppy-disk"></span>
+      </span>
+      <span ng-hide="saveRequired">
+        <span translate="PROFILE_PAGE.PROFILE_SAVED"></span> <span class="glyphicon glyphicon-ok"></span></span>
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form role="form">
+      <div class="form-group">
+        <label for="nameInput" translate="PROFILE_PAGE.NAME"></label>
+        <input type="text" class="form-control" ng-model="user.name" id="nameInput" placeholder="{{'PROFILE_PAGE.YOUR_NAME' | translate}}">
+      </div>
+      <div class="form-group">
+        <label for="emailInput" translate="PROFILE_PAGE.EMAIL"></label>
+        <input type="email" class="form-control" ng-model="user.email" id="emailInput" placeholder="{{'PROFILE_PAGE.YOUR_EMAIL' | translate}}">
+      </div>
+    </form>
+  </div>
+</div>
