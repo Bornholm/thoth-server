@@ -15,12 +15,27 @@
     "ADMIN": "Admin",
     "RECORD_SEARCH": "Search for records..."
   },
+  "DEVBAR": {
+    "CLEAR_CACHE": "Clear cache"
+  },
+  "ROLE_PAGE": {
+    "ROLE_NAME": "Role Name",
+    "RECORDS_PERMISSIONS": "Records Permissions",
+    "OPERATION": "Operation",
+    "FILTER": "Filter",
+    "ACTIONS": "Actions",
+    "DELETE": "Delete",
+    "CREATE": "Create",
+    "READ": "Read",
+    "UPDATE": "Update",
+    "ADD": "Add"
+  },
   "RECORD_PAGE": {
     "SAVE_RECORD": "Save",
     "RECORD_SAVED": "Saved",
     "LABEL": "Label",
     "TAGS": "Tags",
-    "TEXT": "Text"
+    "TEXT": "Text (will be encrypted)"
   },
   "HOME_PAGE": {
     "LABEL": "Label",
@@ -34,6 +49,20 @@
     "EMAIL": "Email",
     "YOUR_EMAIL": "Your email",
     "NAME": "Name",
-    "YOUR_NAME": "Your name"
+    "YOUR_NAME": "Your name",
+    "PERSONAL_INFORMATIONS": "Personal Informations",
+    "ACCESS_RIGHTS": "Access Rights",
+    "ROLES": "Roles"
+  },
+  "ADMIN_PAGE": {
+    "USERS": "Users",
+    "EMAIL": "Email",
+    "ACTIONS": "Actions",
+    "EDIT": "Edit",
+    "ROLE": "Role",
+    "ROLES": "Roles",
+    "PERMISSIONS": "Permissions",
+    "EDIT": "Edit",
+    "CREATE_ROLE": "Create Role"
   }
 }

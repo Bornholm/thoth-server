@@ -54,12 +54,7 @@
 
       $scope.$auth = $auth;
       $scope.$watch('$auth.user', function(user) {
-        if(user && user.roles) {
-          var isAdmin = !!~user.roles.indexOf('admin');
-          adminItem.isVisible = isAdmin;
-        } else {
-          adminItem.isVisible = false;
-        }
+        adminItem.isVisible = $auth.isAdmin();
       });
 
     }]);

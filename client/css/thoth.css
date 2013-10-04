@@ -10,12 +10,16 @@
 
 body, html {
 	width: 100%;
-	height: 100%;
-	font-family: 'Droid Sans', 'Ubuntu Sans', 'sans-serif'
+	font-family: 'Droid Sans', 'Ubuntu Sans', 'sans-serif';
+  background: url('../img/grey.png') repeat;
 }
 
 #content {
 	margin-top: 60px;
+}
+
+#notifications ul {
+  list-style: none;
 }
 
 /* Tags Input */
@@ -27,10 +31,19 @@ tag-input {
 
 tag-input table {
   width: 100%;
+  border: none;
+  padding: 0;
+}
+
+tag-input tr, tag-input td {
+  border: none !important;
+  padding: 0 !important;
 }
 
 tag-input table td.real-input {
   width: 100%;
+  border: none !important;
+  padding: 0;
 }
 
 tag-input input {

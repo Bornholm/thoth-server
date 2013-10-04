@@ -6,7 +6,7 @@
 
 	var Thoth = angular.module(
 		'Thoth',
-		['ngResource', 'ngCookies', 'pascalprecht.translate']
+		['ngResource', 'ngCookies', 'pascalprecht.translate', 'lightRest']
 	);
 
 	Thoth.config([
@@ -18,14 +18,16 @@
 		) {
 			
 			$routeProvider.when('/login', {
-				templateUrl: 'templates/login.html'
+				templateUrl: 'templates/login.html',
+				controller: 'LoginCtrl'
 			});
 
 			$routeProvider.when('/home', {
-				templateUrl: 'templates/home.html'
+				templateUrl: 'templates/home.html',
+				controller: 'HomeCtrl'
 			});
 
-			$routeProvider.when('/profile/:id', {
+			$routeProvider.when('/profile/:userId', {
 				templateUrl: 'templates/profile.html',
 				controller: 'ProfileCtrl'
 			});
@@ -38,6 +40,21 @@
 			$routeProvider.when('/record/:action', {
 				templateUrl: 'templates/record.html',
 				controller: 'RecordCtrl'
+			});
+
+			$routeProvider.when('/role/:roleId/:action', {
+				templateUrl: 'templates/role.html',
+				controller: 'RoleCtrl'
+			});
+
+			$routeProvider.when('/role/:action', {
+				templateUrl: 'templates/role.html',
+				controller: 'RoleCtrl'
+			});
+
+			$routeProvider.when('/admin', {
+				templateUrl: 'templates/admin.html',
+				controller: 'AdminCtrl'
 			});
 
 			$routeProvider.otherwise({redirectTo: '/home'});

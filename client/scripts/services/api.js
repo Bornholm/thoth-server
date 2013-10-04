@@ -10,20 +10,33 @@
             var api = {};
 
             api.Record = $resource(
-                rootUrl + '/records/:id',
-                {'id': '@_id'},
+                rootUrl + '/records/:recordId',
+                {'recordId': '@_id'},
                 {
                     update: {method: 'PUT'}
                 }
             );
 
             api.User = $resource(
-                rootUrl + '/users/:id',
-                {'id': '@_id'},
+                rootUrl + '/users/:userId',
+                {'userId': '@_id'},
                 {
                     update: {method: 'PUT'},
-                    me: {method: 'GET', params: {'id': 'me'}}
+                    me: {method: 'GET', params: {'userId': 'me'}}
                 }
+            );
+
+            api.Role = $resource(
+                rootUrl + '/roles/:roleId',
+                {'roleId': '@_id'},
+                {
+                    update: {method: 'PUT'}
+                }
+            );
+
+            api.RecordPermission = $resource(
+                rootUrl + '/roles/:roleId/permissions/records',
+                {"roleId": '@roleId'}
             );
 
             return api;

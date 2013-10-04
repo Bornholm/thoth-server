@@ -5,10 +5,23 @@
 
   angular.module('Thoth')
     .controller('ProfileCtrl', [
-      '$scope', '$auth', '$notifications',
-      function($scope, $auth, $notifs) {
+      '$scope', '$auth', '$notifications', 
+      '$routeParams', '$api',
+      function($scope, $auth, $notifs, $routeParams, $api) {
 
-        $scope.user = $auth.user;
+        var userId = $routeParams.userId;
+
+        if(userId === 'me') {
+          $scope.user = $auth.user;
+          startWatchingChange();
+        } else {
+          $api.User.get({userId: userId}, function(data) {
+            $scope.user = data;
+            startWatchingChange();
+          });
+        }
+
+        $scope.isAdmin = $auth.isAdmin;
 
         var unwatch;
         function detectModification(newVal, oldVal) {
@@ -36,8 +49,6 @@
           }
           $scope.user.$update(saveHandler);
         };
-
-        startWatchingChange();
 
       }
     ]);

@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-12">
+    <form role="form">
+
+      <fieldset>
+        <legend translate="ADMIN_PAGE.USERS"></legend>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th translate="ADMIN_PAGE.EMAIL"></th>
+              <th translate="ADMIN_PAGE.ACTIONS"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="u in users">
+              <td ng-bind="u.email"></td>
+              <td>
+                <a ng-href="#/profile/{{u._id}}" translate="ADMIN_PAGE.EDIT"></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+
+      <fieldset>
+        <legend translate="ADMIN_PAGE.ROLES"></legend>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th translate="ADMIN_PAGE.ROLE"></th>
+              <th translate="ADMIN_PAGE.ACTIONS"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="r in roles">
+              <td ng-bind="r.name"></td>
+              <td>
+                <a ng-href="#/role/{{r._id}}/edit" translate="ADMIN_PAGE.EDIT"></a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <a type="button" href="#/role/new" class="btn btn-default pull-right" aria-hidden="true">
+                  <span class="glyphicon glyphicon-plus"></span>&nbsp;
+                  <span translate="ADMIN_PAGE.CREATE_ROLE"></span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+
+    </form>
+  </div>
+</div>

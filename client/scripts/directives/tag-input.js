@@ -11,10 +11,13 @@
 		$scope.$apply(function() {
 			var input = $(evt.target);
 			var tag = input.val();
+			$scope.tags = $scope.tags || [];
 			switch(evt.keyCode) {
+				case 32: // key == 'spacebar'
 				case 188: // key == ','  || key == 'Enter'
 				case 13:
-					if(tag.length > 1) {
+					tag = tag.trim();
+					if(tag.length >= 1) {
 						if($scope.label) {
 							var label = evt.keyCode === 188 ? tag.slice(0, -1) : tag;
 							tag = {};
@@ -78,6 +81,9 @@
 					$scope.getTagLabel = function(tag) {
 						return $scope.label ? tag[$scope.label] : tag;
 					}
+					$scope.$watch('tags', function() {
+						console.log('directive', arguments);
+					}, true)
 				}]
 
 			}

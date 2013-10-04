@@ -2,7 +2,7 @@
 
 	"database": "mongodb://localhost/thoth",
 
-	"web": {
+	"server": {
 		"address": "localhost",
 		"port": 3000,
 		"serveClient": true
@@ -21,7 +21,7 @@
 
 	"encryption": {
 		"algorithm": "aes256",
-		"oldHmac": ""
+		"hmacPath": ".hmac"
 	}
 	
 }

@@ -23,7 +23,7 @@
 				case 'edit':
 				case 'view':
 					if(recordId) {
-						$scope.record = $api.Record.get({id: recordId}, function(r) {
+						$scope.record = $api.Record.get({recordId: recordId}, function(r) {
 							$scope.record = r;
 							startWatchingChange();
 						});

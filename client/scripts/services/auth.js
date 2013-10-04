@@ -31,7 +31,16 @@
                   var encoded = w.btoa('bye:bye');
                   $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
                   return $http.get('/api/auth/logout');
-              }
+              };
+
+              auth.isAdmin = function() {
+                var user = auth.user;
+                if(user && user.roles) {
+                  return !!~user.roles.indexOf('admin');
+                } else {
+                  return false;
+                }
+              };
 
               return auth;
             }

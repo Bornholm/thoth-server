@@ -13,7 +13,8 @@
     "sift": "0.0.12",
     "validator": "~1.2.1",
     "config": "~0.4.27",
-    "armature": "~0.0.1-f"
+    "armature": "0.0.2",
+    "nconf": "~0.6.7"
   },
   "devDependencies": {},
   "scripts": {
