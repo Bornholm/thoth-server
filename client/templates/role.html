@@ -28,7 +28,7 @@
           </thead>
           <tbody>
             <tr ng-repeat="p in recordsPermissions">
-              <td><span class="form-control" ng-bind="p.op"></span></td>
+              <td><span class="form-control" ng-bind="p.op | uppercase"></span></td>
               <td>
                 <tag-input class="form-control" ng-change="markAsModified()" ng-model="p.tags" tags-available="availableTags" />
               </td>

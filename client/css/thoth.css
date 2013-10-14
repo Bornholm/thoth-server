@@ -18,6 +18,14 @@ body, html {
 	margin-top: 60px;
 }
 
+/* Notifications */
+
+#notifications {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
 #notifications ul {
   list-style: none;
 }

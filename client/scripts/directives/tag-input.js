@@ -77,13 +77,10 @@
 					$scope.tags = $scope.tags || [];
 					$scope.removeTag = function(tag) {
 						$scope.tags.splice($scope.tags.indexOf(tag), 1);
-					}
+					};
 					$scope.getTagLabel = function(tag) {
 						return $scope.label ? tag[$scope.label] : tag;
-					}
-					$scope.$watch('tags', function() {
-						console.log('directive', arguments);
-					}, true)
+					};
 				}]
 
 			}

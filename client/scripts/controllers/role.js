@@ -150,8 +150,7 @@
         'CREATE',
         'READ',
         'UPDATE',
-        'DELETE',
-        '*'
+        'DELETE'
       ];
 
     }]);

@@ -1,0 +1,16 @@
+{
+  "auth": "ldap",
+  "plugins": {
+    "thoth-ldap-auth": {
+      "path": "thoth-ldap-auth",
+      "options": {
+        "dn": "dc=example,dc=com",
+        "scope": "sub",
+        "url": "ldap://my-ldap-server.com",
+        "port": 389,
+        "filter": "uid=${username}",
+        "validator": "^[A-Za-z-_0-9]+$"
+      }
+    }
+  }
+}

@@ -32,7 +32,7 @@
         
         function startWatchingChange() {
           unwatch = $scope.$watch(
-            'user.name + user.email + user.permissions',
+            'user.name + user.email + user.permissions + user.roles',
             detectModification
           );
         }

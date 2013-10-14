@@ -14,9 +14,16 @@ module.exports = exports = {
 			port: pluginOpts.port
 		});
 
+		var validator = new RegExp(pluginOpts.validator || '');
+
 		api.auth.registerAuthBackend('ldap', {
 
 			authenticate: function(username, password, cb) {
+
+				var isUsernameValid = validator.test(username);
+				if(!isUsernameValid) {
+					return cb(new Error('Invalid username format !'));
+				}
 
 				var filter = pluginOpts.filter.replace('${username}', username);
 
