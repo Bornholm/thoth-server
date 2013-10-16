@@ -5,7 +5,12 @@
 	"server": {
 		"address": "localhost",
 		"port": 3000,
-		"serveClient": true
+		"serveClient": true,
+		"ssl": {
+			"key": null,
+			"cert": null,
+			"pfx": null
+		}
 	},
 
 	"plugins": {
