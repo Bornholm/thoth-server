@@ -97,14 +97,24 @@
 	}]);
 
 	Thoth.run([
-		'$rootScope', '$auth', '$location', 
-		function($rootScope, $auth, $location) {
+		'$rootScope', '$auth', '$location', '$window', '$notifications',
+		function($rootScope, $auth, $location, $window, $notifs) {
 
 			$rootScope.$location = $location;
 			$rootScope.$watch('$location.path()', $auth.ping.bind($auth));
 
 			if($location.path() !== '/login') {
 				$rootScope.nextUrl = $location.url();
+			}
+
+			if ($window.location.protocol !== 'https:') {
+				$notifs.add(
+					"Connexion non sécurisée !",
+					"Vous accédez à cette application via une connexion non cryptée !\n" +
+					"Ceci peut éventuellement amener à une interception de vos données.",
+					$notifs.DANGER,
+					true
+				);
 			}
 
 		}

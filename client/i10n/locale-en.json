@@ -41,7 +41,10 @@
     "LABEL": "Label",
     "TAGS": "Tags",
     "ACTIONS": "Actions",
-    "ACTIONS_AVAILABLE": "See/Edit/Delete"
+    "ACTIONS_AVAILABLE": "See/Edit/Delete",
+    "DOWNLOAD_ALL": "Download All",
+    "DOWNLOAD": "Download",
+    "YOUR_PASSPHRASE": "Your passphrase..."
   },
   "PROFILE_PAGE": {
     "SAVE_PROFILE": "Save",

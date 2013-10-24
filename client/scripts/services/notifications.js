@@ -8,24 +8,25 @@
             var notifications = [];
             return {
 
-                ERROR: 'error',
+                DANGER: 'danger',
                 SUCCESS: 'success',
                 WARNING: 'warning',
                 INFO: 'info',
 
                 classes: {
-                    ERROR: 'alert-error',
+                    DANGER: 'alert-danger',
                     SUCCESS: 'alert-success',
                     WARNING: 'alert-warning',
                     INFO: 'alert-info',
                 },
                 
-                add: function(title, message, type) {
+                add: function(title, message, type, persistent) {
                     type = (type || 'INFO').toUpperCase();
                     notifications.push({
                         'class': this.classes[type],
                         title: title,
-                        message: message
+                        message: message,
+                        persistent: persistent
                     });
                 },
 
