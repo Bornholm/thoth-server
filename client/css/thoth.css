@@ -2,8 +2,15 @@
 	display: none;
 }
 
+.brand {
+  color: #777;
+}
+
+.logo.small {
+  height: 30px;
+}
+
 .navbar-brand .logo {
-	height: 30px;
 	margin-top: -10px;
 	margin-bottom: -10px;
 }

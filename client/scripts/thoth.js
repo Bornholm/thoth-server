@@ -101,7 +101,17 @@
 		function($rootScope, $auth, $location, $window, $notifs) {
 
 			$rootScope.$location = $location;
-			$rootScope.$watch('$location.path()', $auth.ping.bind($auth));
+			$rootScope.$watch('$location.path()', function(newVal) {
+
+				$auth.ping(); // Check server
+
+				if(newVal === '/login') {
+					$rootScope.isNavbarVisible = false;
+				} else {
+					$rootScope.isNavbarVisible = true;
+				}
+				
+			});
 
 			if($location.path() !== '/login') {
 				$rootScope.nextUrl = $location.url();

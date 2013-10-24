@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="Thoth">
   <head>
-    <title>Thoth - Keeper of secret knowledge</title>
+    <title>Thoth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Style -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -13,9 +13,9 @@
     <![endif]-->
   </head>
   <body>
-    <ng-include src="'templates/navbar.html'"></ng-include>
-    <div id="content" class="container" ng-view></div>
-    <ng-include src="'templates/notifications.html'"></ng-include>
+    <ng-include ng-cloak ng-show="isNavbarVisible" src="'templates/navbar.html'"></ng-include>
+    <div id="content" class="container" ng-cloak ng-view></div>
+    <ng-include ng-cloak src="'templates/notifications.html'"></ng-include>
     <!-- Libraries -->
     <script type="text/javascript" src="bower_components/async/lib/async.js"></script>
     <script type="text/javascript" src="bower_components/lodash/lodash.js"></script>

@@ -10,8 +10,6 @@
       '$translate', '$location',
       function($scope, $rootScope, $auth, $api, $translate, $location) {
 
-      $scope.isNavVisible = false;
-
       var adminItem = {
         label: 'NAVBAR.ADMIN',
         icon: 'glyphicon-wrench',
