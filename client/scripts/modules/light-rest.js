@@ -24,6 +24,10 @@
                 return url;
               }
 
+              function pluckData(res) {
+                return res.data;
+              }
+
               function request(method, url, data, opts) {
                 opts = opts || {};
                 var req = {
@@ -32,7 +36,7 @@
                   data: data
                 };
                 angular.extend(req, opts);
-                return $http(req);
+                return $http(req).then(pluckData);
               }
 
               var methods = 'post get put delete head'.split(' ');

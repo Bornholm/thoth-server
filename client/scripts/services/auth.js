@@ -5,13 +5,13 @@
 
     angular.module('Thoth')
         .factory('$auth', [
-            '$rootScope', '$http', '$cookieStore', '$api', '$q',
-            function($rootScope, $http, $cookieStore, $api, $q) {
+            '$rootScope', '$http', '$cookieStore', 'lightRest', '$q',
+            function($rootScope, $http, $cookieStore, $rest, $q) {
 
               var auth = {};
 
               auth.ping = function() {
-                  return $http.get('/api/auth/ping')
+                  return $rest.get('/api/auth/ping')
                     .then($rootScope.$broadcast.bind($rootScope, 'login'));
               };
 
@@ -19,11 +19,13 @@
                 var encoded = w.btoa(username + ':' + password);
                 $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
                 var deferred = $q.defer();
-                $api.User.me(function(user) {
+                $
+                $rest.get('/api/users/me').then(function(user) {
                   auth.user = user;
                   $rootScope.$broadcast('login');
-                  return deferred.resolve(user);
+                  deferred.resolve(user);
                 }, deferred.reject);
+
                 return deferred.promise;
               };
 

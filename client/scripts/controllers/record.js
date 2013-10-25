@@ -5,10 +5,10 @@
 
 	angular.module('Thoth')
 		.controller('RecordCtrl', [
-			'$scope', '$api', '$routeParams',
+			'$scope', 'lightRest', '$routeParams',
 			'$location', '$notifications',
 			function(
-				$scope, $api, $routeParams,
+				$scope, $rest, $routeParams,
 				$location, $notifs
 			) {
 
@@ -17,17 +17,20 @@
 
 			switch(action) {
 				case 'new':
-					$scope.record = new $api.Record();
+					$scope.record = {};
 					startWatchingChange();
 					break;
 				case 'edit':
 				case 'view':
 					if(recordId) {
-						$scope.record = $api.Record.get({recordId: recordId}, function(r) {
-							$scope.record = r;
-							startWatchingChange();
-						});
-					} else $location.path('/record/new');
+						$rest.get('/api/records/:recordId', {recordId: recordId})
+							.then(function(res) {
+								$scope.record = res.data;
+							})
+							.then(startWatchingChange);
+					} else {
+						$location.path('/record/new');
+					}
 					break;
 				default:
 					$location.path('/record/new');
@@ -59,9 +62,9 @@
 					unwatch();
 				}
 				if(isNew) {
-					$scope.record.$save(saveHandler);
+					$rest.post('/api/records', $scope.record).then(saveHandler);
 				} else {
-					$scope.record.$update(saveHandler);
+					$rest.put('/api/records/:_id', $scope.record).then(saveHandler);
 				}
 			}
 

@@ -6,8 +6,8 @@
   angular.module('Thoth')
     .controller('ProfileCtrl', [
       '$scope', '$auth', '$notifications', 
-      '$routeParams', '$api',
-      function($scope, $auth, $notifs, $routeParams, $api) {
+      '$routeParams', 'lightRest',
+      function($scope, $auth, $notifs, $routeParams, $rest) {
 
         var userId = $routeParams.userId;
 
@@ -15,10 +15,8 @@
           $scope.user = $auth.user;
           startWatchingChange();
         } else {
-          $api.User.get({userId: userId}, function(data) {
-            $scope.user = data;
-            startWatchingChange();
-          });
+          $scope.user = $rest.get('/api/users/:userId', {userId: userId});
+          $scope.user.then(startWatchingChange);
         }
 
         $scope.isAdmin = $auth.isAdmin;
@@ -47,7 +45,7 @@
           if(typeof unwatch === 'function') {
             unwatch();
           }
-          $scope.user.$update(saveHandler);
+          $rest.put('/api/users/:_id', $scope.user).then(saveHandler);
         };
 
       }

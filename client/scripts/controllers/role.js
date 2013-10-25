@@ -7,10 +7,10 @@
 
   angular.module('Thoth')
     .controller('RoleCtrl', [
-      '$scope', '$api', '$routeParams',
+      '$scope', '$routeParams',
       '$location', '$notifications', 'lightRest',
       function(
-        $scope, $api, $routeParams,
+        $scope, $routeParams,
         $location, $notifs, $rest
       ) {
 
@@ -21,7 +21,7 @@
 
       switch(action) {
         case 'new':
-          $scope.role = new $api.Role();
+          $scope.role = {};
           $scope.role.permissions = [];
           startWatchingChange();
           break;
@@ -112,7 +112,7 @@
         var promise;
         if(isNew) {
           promise = $rest.post('/api/roles', $scope.role)
-            .success(function(data) {
+            .then(function(data) {
               $scope.role = data;
               return cb();
             });

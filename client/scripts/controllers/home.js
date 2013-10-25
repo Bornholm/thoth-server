@@ -5,12 +5,12 @@
 
 	angular.module('Thoth')
 		.controller('HomeCtrl', [
-			'$scope', '$api',
+			'$scope', 'lightRest',
       '$location', '$timeout',
-			function($scope, $api, $location, $timeout) {
+			function($scope, $rest, $location, $timeout) {
 
         var search = $location.search();
-				$scope.records = $api.Record.query(search);
+				$scope.records = $rest.get('/api/records', null, {params: search});
 
         $scope.passphrase = "";
         $scope.showPassphraseInput = false;

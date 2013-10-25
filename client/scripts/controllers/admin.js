@@ -5,14 +5,20 @@
 
   angular.module('Thoth')
     .controller('AdminCtrl', [
-      '$scope', '$api',
-      '$auth',
-      function($scope, $api, $auth) {
+      '$scope', 'lightRest',
+      function($scope, $rest) {
+
+        $rest.get('/api/users').then(function(data) {
+          $scope.users = data;
+        });
         
-        $scope.users = $api.User.query();
+        $rest.get('/api/roles').then(function(data) {
+          $scope.roles = data;
+        });
 
-        $scope.roles = $api.Role.query();
-
+        $rest.get('/api/tags').then(function(data) {
+          $scope.tags = data;
+        });
       }
     ]);
 

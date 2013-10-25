@@ -6,9 +6,9 @@
   angular.module('Thoth')
     .controller('NavBarCtrl', [
       '$scope', '$rootScope',
-      '$auth', '$api',
+      '$auth',
       '$translate', '$location',
-      function($scope, $rootScope, $auth, $api, $translate, $location) {
+      function($scope, $rootScope, $auth, $translate, $location) {
 
       var adminItem = {
         label: 'NAVBAR.ADMIN',

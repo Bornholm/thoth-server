@@ -66,6 +66,10 @@
     "ROLES": "Roles",
     "PERMISSIONS": "Permissions",
     "EDIT": "Edit",
-    "CREATE_ROLE": "Create Role"
+    "CREATE_ROLE": "Create Role",
+    "TAGS": "Tags",
+    "TAG": "Tag",
+    "DESCRIPTION": "Description",
+    "CREATE_TAG": "Create Tag"
   }
 }
