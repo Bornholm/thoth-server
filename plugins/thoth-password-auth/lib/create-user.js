@@ -2,7 +2,7 @@ var async = require('async');
 
 module.exports = exports = function(app, program) {
 
-  console.log('Creating new admin account...');
+  app.logger.info('Creating new admin account...');
 
   async.waterfall([
     function askAdminUsername(next) {
@@ -27,7 +27,7 @@ module.exports = exports = function(app, program) {
         if(ok) {
           return next(null, username, password);
         }
-        console.log('Aborting...');
+        app.logger.info('Aborting...');
         process.exit();
       });
     },
@@ -45,7 +45,7 @@ module.exports = exports = function(app, program) {
     if(err) {
       throw err;
     }
-    console.log('Done !');
+    app.logger.info('Done !');
     process.exit();
   });
 

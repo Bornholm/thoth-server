@@ -1,4 +1,30 @@
 {
+  "GLOBAL": {
+    "SAVED": "Saved !",
+    "DELETED": "Deleted !",
+    "UNENCRYPTED_CONNECTION": {
+      "TITLE": "Connection unencrypted !",
+      "DESC": "Your connection is unencrypted ! This can lead to a potential data breach."
+    }
+  },
+  "ERROR": {
+    "UnknownError": {
+      "TITLE": "Unknown Error :(",
+      "DESC": "Please contact your administrator."
+    },
+    "InvalidCredentialsError": {
+      "TITLE": "Invalid credentials !",
+      "DESC": "Your credentials are invalid or your account is not yet activated."
+    },
+    "RevisionConflictError": {
+      "TITLE": "Revision Conflict !",
+      "DESC": "Your revision is conflicting with the one on the server. Please refresh your view."
+    },
+    "UnauthorizedError": {
+      "TITLE": "Unauthorized !",
+      "DESC": "You don't have the authorization to do this !"
+    }
+  },
   "LOGIN_PAGE": {
     "YOUR_USERNAME": "Your username",
     "YOUR_PASSWORD": "Your password",
@@ -14,9 +40,6 @@
     "NEW_RECORD": "New Record",
     "ADMIN": "Admin",
     "RECORD_SEARCH": "Search for records..."
-  },
-  "DEVBAR": {
-    "CLEAR_CACHE": "Clear cache"
   },
   "ROLE_PAGE": {
     "ROLE_NAME": "Role Name",
@@ -35,7 +58,12 @@
     "RECORD_SAVED": "Saved",
     "LABEL": "Label",
     "TAGS": "Tags",
-    "TEXT": "Text (will be encrypted)"
+    "TEXT": "Text",
+    "DELETE_RECORD": "Delete",
+    "DELETE_CONFIRM": "You will delete this record. Are you sure ?",
+    "LAST_UPDATE": "Last Update",
+    "REVISION": "Revision",
+    "CREATION_DATE": "Creation Date"
   },
   "HOME_PAGE": {
     "LABEL": "Label",
@@ -44,7 +72,8 @@
     "ACTIONS_AVAILABLE": "See/Edit/Delete",
     "DOWNLOAD_ALL": "Download All",
     "DOWNLOAD": "Download",
-    "YOUR_PASSPHRASE": "Your passphrase..."
+    "YOUR_PASSPHRASE": "Your passphrase...",
+    "OPENSSL_HELP": "To decrypt, use"
   },
   "PROFILE_PAGE": {
     "SAVE_PROFILE": "Save",
@@ -71,5 +100,12 @@
     "TAG": "Tag",
     "DESCRIPTION": "Description",
     "CREATE_TAG": "Create Tag"
+  },
+  "TAG_PAGE": {
+    "LABEL": "Label",
+    "DESCRIPTION": "Description",
+    "YOUR_TAG_LABEL": "Your tag label...",
+    "TAG_SAVED": "Saved",
+    "SAVE_TAG": "Save"
   }
 }

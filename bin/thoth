@@ -3,5 +3,9 @@
 var program = require('commander');
 var Thoth = require('../lib/thoth');
 
-new Thoth().cli();
+process.env.NODE_ENV = 'cli';
+
+var app = new Thoth();
+
+app.cli();
 

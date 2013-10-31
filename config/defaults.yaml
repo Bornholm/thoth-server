@@ -1,0 +1,49 @@
+# MongoDB url
+database: mongodb://localhost/thoth
+
+# Web server configuration
+server:
+  # Basic Auth Realm
+  realm: Thoth
+  # IP Address the server will listening to (0.0.0.0 to listen all)
+  host: 127.0.0.1
+  # Server port
+  port: 8080
+  # Should we serve the Web client app ?
+  serveClient: True
+  # Use HTTPS ? (if key & cert specified, automatically use HTTPS)
+  ssl:
+    key:
+    cert:
+    pfx:
+
+# Auth backend, see plugins
+auth: local
+
+encryption:
+  # Encryption algorithm to use
+  algorithm: aes256
+  # Path to store the passphrase verification HMAC
+  hmacPath: ./.hmac
+
+log:
+  level: info
+  colorize: False
+  timestamp: True
+
+# Default access rights
+accessRights:
+  defaultPermissions:
+    - op: read
+      q:
+        type: Tag
+  defaultRoles:
+
+# Plugins configuration
+plugins:
+  thoth-password-auth:
+    path: ./plugins/thoth-password-auth
+    options:
+      rounds: 10
+
+

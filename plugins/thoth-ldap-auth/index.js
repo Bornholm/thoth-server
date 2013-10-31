@@ -9,9 +9,10 @@ module.exports = exports = {
 			port: pluginOpts.port
 		});		
 
-		require('./auth-handling')(pluginOpts, this.api, client);
+		require('./lib/auth-handling')(pluginOpts, this.api, client);
+    require('./lib/tasks/create-ldap-user')(pluginOpts, this.api, client);
+    require('./lib/tasks/search-ldap')(pluginOpts, this.api, client);
 		
-
 		process.nextTick(next);
 
 	}

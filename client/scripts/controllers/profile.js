@@ -12,11 +12,17 @@
         var userId = $routeParams.userId;
 
         if(userId === 'me') {
-          $scope.user = $auth.user;
-          startWatchingChange();
+          $rest.get('/api/users/:userId', {userId: userId})
+            .then(function(user) {
+              $auth.user = $scope.user = user;
+            }, $scope.serverErrorHandler)
+            .then(startWatchingChange);
         } else {
-          $scope.user = $rest.get('/api/users/:userId', {userId: userId});
-          $scope.user.then(startWatchingChange);
+          $rest.get('/api/users/:userId', {userId: userId})
+            .then(function(user) {
+              $scope.user = user;
+            }, $scope.serverErrorHandler)
+            .then(startWatchingChange);
         }
 
         $scope.isAdmin = $auth.isAdmin;
@@ -45,8 +51,14 @@
           if(typeof unwatch === 'function') {
             unwatch();
           }
-          $rest.put('/api/users/:_id', $scope.user).then(saveHandler);
+          $rest.put('/api/users/:_id', $scope.user)
+            .then(saveHandler, $scope.serverErrorHandler);
         };
+
+        $rest.get('/api/roles')
+          .then(function(roles) {
+            $scope.rolesAvailable = roles;
+          }, $scope.serverErrorHandler);
 
       }
     ]);

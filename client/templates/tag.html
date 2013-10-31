@@ -1,0 +1,23 @@
+<div class="row button-bar">
+  <div class="col-md-12">
+    <button ng-disabled="!saveRequired" ng-class="{'btn-default': !saveRequired, 'btn-success': saveRequired}" class="btn pull-right" ng-click="save()">
+      <span ng-show="saveRequired"><span translate="TAG_PAGE.SAVE_TAG"></span> <span class="glyphicon glyphicon-floppy-disk"></span></span>
+      <span ng-hide="saveRequired"><span translate="TAG_PAGE.TAG_SAVED"></span> <span class="glyphicon glyphicon-ok"></span></span>
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form role="form">
+      <div class="form-group">
+        <label for="tagLabelInput" translate="TAG_PAGE.LABEL"></label>
+        <input type="text" ng-model="tag.label" class="form-control" id="tagLabelInput" placeholder="{{'TAG_PAGE.YOUR_TAG_LABEL' | translate}}">
+      </div>
+      <div class="form-group">
+        <label for="tagDescInput" translate="TAG_PAGE.DESCRIPTION"></label>
+        <textarea class="form-control" ng-model="tag.description" id="tagDescInput" rows="3"></textarea>
+      </div>
+    </form>
+  </div>
+</div>

@@ -59,9 +59,9 @@ module.exports = exports = {
     });
 
     api.tasks.registerTask(
-      'local:create-admin',
-      require('./tasks/create-admin'),
-      'create a new admin account'
+      'password:create-user',
+      require('./lib/create-user'),
+      'Create a new user account with password'
     );
 
     process.nextTick(next);

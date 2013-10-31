@@ -21,21 +21,24 @@
 
       switch(action) {
         case 'new':
-          $scope.role = {};
-          $scope.role.permissions = [];
+          $scope.role = {
+            permissions: []
+          };
           startWatchingChange();
           break;
         case 'edit':
         case 'view':
           if(roleId) {
-            $rest.get('/api/roles/:roleId', {roleId: roleId}).success(
+            $rest.get('/api/roles/:roleId', {roleId: roleId}).then(
               function(data) {
                 $scope.role = data;
                 updateRecordsPermissions();
                 startWatchingChange();
               }
             );
-          } else $location.path('/role/new');
+          } else {
+            $location.path('/role/new');
+          }
           break;
         default:
           $location.path('/role/new');
@@ -135,8 +138,7 @@
             }
           }
         );
-        promise.success(cb.bind(null, null));
-        promise.error(cb);
+        promise.then(cb.bind(null, null), cb);
       }
 
       $scope.save = function() {

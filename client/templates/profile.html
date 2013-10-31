@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row button-bar">
   <div class="col-md-12">
     <button ng-disabled="!saveRequired" ng-class="{'btn-default': !saveRequired, 'btn-success': saveRequired}" class="btn pull-right" ng-click="save()">
       <span ng-show="saveRequired">
@@ -30,7 +30,7 @@
         <legend translate="PROFILE_PAGE.ACCESS_RIGHTS"></legend>
         <div class="form-group">
           <label for="rolesInput" translate="PROFILE_PAGE.ROLES"></label>
-          <tag-input type="text" class="form-control" ng-model="user.roles" id="rolesInput" placeholder="{{'PROFILE_PAGE.ROLES' | translate}}" />
+          <tag-input type="text" class="form-control" tags-available="rolesAvailable | pluck:'name'" tags-unique="true" ng-model="user.roles" id="rolesInput" placeholder="{{'PROFILE_PAGE.ROLES' | translate}}" />
         </div>
       </fieldset>
 

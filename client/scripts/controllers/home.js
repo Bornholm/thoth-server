@@ -23,8 +23,11 @@
         $scope.resetPassphrase = function() {
           $timeout(function() {
             $scope.passphrase = "";
-            $scope.showPassphraseInput = false;
           }, 0);
+        };
+
+        $scope.viewRecord = function(recordId) {
+          $location.path('/record/' + recordId + '/view');
         };
 
 		  }

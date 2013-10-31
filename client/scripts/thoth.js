@@ -57,6 +57,16 @@
 				controller: 'AdminCtrl'
 			});
 
+			$routeProvider.when('/tag/:tagId/:action', {
+				templateUrl: 'templates/tag.html',
+				controller: 'TagCtrl'
+			});
+
+			$routeProvider.when('/tag/:action', {
+				templateUrl: 'templates/tag.html',
+				controller: 'TagCtrl'
+			});
+
 			$routeProvider.otherwise({redirectTo: '/home'});
 
 			$routeProvider.html5Mode = false;
@@ -92,13 +102,19 @@
 			});
 
 			$translateProvider.preferredLanguage('en');
+			$translateProvider.fallbackLanguage('en');
 			$translateProvider.useLocalStorage();
 
 	}]);
 
 	Thoth.run([
-		'$rootScope', '$auth', '$location', '$window', '$notifications',
-		function($rootScope, $auth, $location, $window, $notifs) {
+		'$rootScope', '$auth',
+		'$location', '$window',
+		'$notifications', '$translate',
+		function(
+			$rootScope, $auth,
+			$location, $window,
+			$notifs, $translate) {
 
 			$rootScope.$location = $location;
 			$rootScope.$watch('$location.path()', function(newVal) {
@@ -117,15 +133,34 @@
 				$rootScope.nextUrl = $location.url();
 			}
 
-			if ($window.location.protocol !== 'https:') {
+			// Warning if not HTTPS
+			if($window.location.protocol !== 'https:') {
 				$notifs.add(
-					"Connexion non sécurisée !",
-					"Vous accédez à cette application via une connexion non cryptée !\n" +
-					"Ceci peut éventuellement amener à une interception de vos données.",
+					$translate('UNENCRYPTED_CONNECTION.TITLE'),
+					$translate('UNENCRYPTED_CONNECTION.DESC'),
 					$notifs.DANGER,
 					true
 				);
 			}
+
+			// REST API general error handling
+			$rootScope.serverErrorHandler = function(res) {
+				var data = res.data;
+				if(data && data.name || data.error) {
+					var errorName = data.error || data.name;
+					$notifs.add(
+						$translate('ERROR.' + errorName + '.TITLE'),
+						$translate('ERROR.' + errorName + '.DESC'),
+						$notifs.DANGER
+					);
+				} else {
+					$notifs.add(
+						$translate('ERROR.UnknownError.TITLE'),
+						$translate('ERROR.UnknownError.DESC'),
+						$notifs.DANGER
+					);
+				}
+			};
 
 		}
 	]);

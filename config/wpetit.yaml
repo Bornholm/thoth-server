@@ -1,0 +1,27 @@
+server:
+  host: 0.0.0.0
+  port: 4443
+  ssl:
+    key: ./ssl-test/server.key
+    cert: ./ssl-test/server.crt
+
+auth: ldap
+
+log:
+  colorize: True
+  level: debug
+
+plugins:
+  thoth-ldap-auth:
+    path: ./plugins/thoth-ldap-auth
+    options:
+      dn: ou=personnels EN,ou=ac-dijon,ou=education,o=gouv,c=fr
+      scope: sub
+      url: ldap://ldap-m2.in.ac-dijon.fr
+      port: 389
+      filter: uid=${username}
+      validator: ^[A-Za-z-_0-9]+$
+      cacheTimeout: 60000
+      autoComplete: True
+      nameField: cn
+      emailField: mail

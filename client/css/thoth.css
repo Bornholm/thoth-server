@@ -2,6 +2,10 @@
 	display: none;
 }
 
+.align-right {
+  text-align: right;
+}
+
 .brand {
   color: #777;
 }
@@ -13,6 +17,14 @@
 .navbar-brand .logo {
 	margin-top: -10px;
 	margin-bottom: -10px;
+}
+
+.button-bar {
+  margin-bottom: 10px;
+}
+
+.record-item {
+  cursor: pointer;
 }
 
 body, html {
