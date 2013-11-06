@@ -1,9 +1,114 @@
 {
+  "GLOBAL": {
+    "SAVED": "Sauvegardé",
+    "DELETED": "Supprimé",
+    "UNENCRYPTED_CONNECTION": {
+      "TITLE": "Connexion non chiffrée",
+      "DESC": "Votre connexion n'est pas chiffrée. Ceci peut amener à un potentiel vol de vos données."
+    }
+  },
+  "BUTTONBAR": {
+    "SAVE": "Enregister",
+    "SAVED": "Enregistré",
+    "DELETE": "Supprimer"
+  },
+  "ERROR": {
+    "UnknownError": {
+      "TITLE": "Erreur inconnue :(",
+      "DESC": "Veuillez contacter votre administrateur."
+    },
+    "InvalidCredentialsError": {
+      "TITLE": "Identifiants invalides.",
+      "DESC": "Vos identifiants sont invalides ou votre compte n'a pas encore été validé."
+    },
+    "RevisionConflictError": {
+      "TITLE": "Conflit de révisions",
+      "DESC": "Votre révision est en conflit avec celle existante sur le serveur. Veuillez rafraichir votre vue."
+    },
+    "UnauthorizedError": {
+      "TITLE": "Permission non accordée",
+      "DESC": "Cette opération n'est pas autorisée pour votre compte."
+    }
+  },
+  "LANG": {
+    "FR": "Français",
+    "EN": "Anglais"
+  },
   "LOGIN_PAGE": {
     "YOUR_USERNAME": "Votre nom d'utilisateur",
     "YOUR_PASSWORD": "Votre mot de passe",
     "USER": "Utilisateur",
     "PASSWORD": "Mot de passe",
-    "LOG_IN": "Se connecter"
+    "LOG_IN": "S'identifier"
+  },
+  "NAVBAR": {
+    "LOG_OUT": "Se déconnecter",
+    "SEARCH": "Rechercher",
+    "PROFILE": "Profil",
+    "NEW_RECORD": "Nouvel enregistrement",
+    "ADMIN": "Administration",
+    "RECORD_SEARCH": "Chercher des enregistrements..."
+  },
+  "ROLE_PAGE": {
+    "ROLE_NAME": "Nom du rôle",
+    "RECORDS_PERMISSIONS": "Permissions associées au rôle",
+    "OPERATION": "Opération",
+    "FILTER": "Filtre",
+    "ACTIONS": "Actions",
+    "DELETE": "Supprimer",
+    "CREATE": "Créer",
+    "READ": "Voir",
+    "UPDATE": "Modifier",
+    "ADD": "Ajouter"
+  },
+  "RECORD_PAGE": {
+    "LABEL": "Label",
+    "TAGS": "Tags",
+    "TEXT": "Texte",
+    "DELETE_CONFIRM": "Vous allez supprimer cet enregistrement. Êtes vous sûr de vouloir continuer ?",
+    "LAST_UPDATE": "Dernière mise à jour",
+    "REVISION": "Révision",
+    "CREATION_DATE": "Date de création",
+    "META": "Métadonnées"
+  },
+  "HOME_PAGE": {
+    "LABEL": "Label",
+    "TAGS": "Tags",
+    "ACTIONS": "Actions",
+    "DOWNLOAD_ALL": "Tout télécharger",
+    "DOWNLOAD": "Télécharger",
+    "YOUR_PASSPHRASE": "Votre phrase secrète",
+    "OPENSSL_HELP": "Pour déchiffrer, utiliser"
+  },
+  "PROFILE_PAGE": {
+    "EMAIL": "Email",
+    "YOUR_EMAIL": "Votr email",
+    "NAME": "Nom",
+    "YOUR_NAME": "Votre nom",
+    "PERSONAL_INFORMATIONS": "Informations personnelles",
+    "ACCESS_RIGHTS": "Droits d'accès",
+    "ROLES": "Rôles",
+    "LANG": "Langues",
+    "UI_LANGUAGE": "Langue de l'interface",
+    "SETTINGS": "Paramètres"
+  },
+  "ADMIN_PAGE": {
+    "USERS": "Utilisateurs",
+    "EMAIL": "Email",
+    "ACTIONS": "Actions",
+    "EDIT": "Editer",
+    "ROLE": "Rôle",
+    "ROLES": "Rôles",
+    "PERMISSIONS": "Permissions",
+    "CREATE_ROLE": "Créer un rôle",
+    "TAGS": "Tags",
+    "TAG": "Tag",
+    "DESCRIPTION": "Description",
+    "CREATE_TAG": "Créer un Tag"
+  },
+  "TAG_PAGE": {
+    "LABEL": "Label",
+    "DESCRIPTION": "Description",
+    "YOUR_TAG_LABEL": "Le label de votre Tag"
   }
 }

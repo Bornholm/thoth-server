@@ -1,14 +1,4 @@
-<div class="row button-bar align-right">
-  <div class="col-lg-12">
-    <button ng-disabled="!saveRequired" ng-class="{'btn-default': !saveRequired, 'btn-success': saveRequired}" class="btn" ng-click="save()">
-      <span ng-show="saveRequired"><span translate="RECORD_PAGE.SAVE_RECORD"></span> <span class="glyphicon glyphicon-floppy-disk"></span></span>
-      <span ng-hide="saveRequired"><span translate="RECORD_PAGE.RECORD_SAVED"></span> <span class="glyphicon glyphicon-ok"></span></span>
-    </button>
-    <button ng-click="delete()" ng-disabled="!record._id" class="btn btn-danger">
-      <span translate="RECORD_PAGE.DELETE_RECORD"></span> <span class="glyphicon glyphicon-trash"></span>
-    </button>
-  </div>
-</div>
+<div ng-include src="'templates/buttonbar.html'" class="row button-bar"></div>
 <div class="row">
   <div class="col-lg-12">
     <form role="form">
@@ -31,18 +21,21 @@
 <div class="row">
   <div class="col-lg-12">
     <form role="form" class="form-horizontal">
-      <div class="form-group">
-        <label class="control-label col-lg-2" translate="RECORD_PAGE.LAST_UPDATE"></label>
-        <div class="col-lg-10"><span ng-bind="record.lastUpdate | date:'medium'" class="form-control"></span></div>
-      </div>
-      <div class="form-group">
-        <label class="control-label col-lg-2" translate="RECORD_PAGE.REVISION"></label>
-        <div class="col-lg-10"><span ng-bind="record.revision" class="form-control"></span></div>
-      </div>
-      <div class="form-group">
-        <label class="control-label col-lg-2" translate="RECORD_PAGE.CREATION_DATE"></label>
-        <div class="col-lg-10"><span ng-bind="record.creationDate | date:'medium'" class="form-control"></span></div>
-      </div>
+      <fieldset>
+        <legend translate="RECORD_PAGE.META"></legend>
+        <div class="form-group">
+          <label class="control-label col-lg-2" translate="RECORD_PAGE.LAST_UPDATE"></label>
+          <div class="col-lg-10"><span ng-bind="record.lastUpdate | date:'medium'" class="form-control" disabled></span></div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-lg-2" translate="RECORD_PAGE.REVISION"></label>
+          <div class="col-lg-10"><span ng-bind="record.revision" class="form-control" disabled></span></div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-lg-2" translate="RECORD_PAGE.CREATION_DATE"></label>
+          <div class="col-lg-10"><span ng-bind="record.creationDate | date:'medium'" class="form-control" disabled></span></div>
+        </div>
+      </fieldset>
     </form>
   </div>
 </div>

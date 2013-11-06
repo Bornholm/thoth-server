@@ -10,7 +10,10 @@
 			function($scope, $rest, $location, $timeout) {
 
         var search = $location.search();
-				$scope.records = $rest.get('/api/records', null, {params: search});
+				$rest.get('/api/records', null, {params: search})
+          .then(function(records) {
+            $scope.records = records;
+          }, $scope.serverErrorHandler);
 
         $scope.passphrase = "";
         $scope.showPassphraseInput = false;

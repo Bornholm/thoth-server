@@ -38,7 +38,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-click="viewRecord(record._id)" ng-repeat="record in records" class="record-item">
+          <tr ng-click="viewRecord(record._id)" ng-repeat="record in records" class="record-item toggle">
             <td ng-bind="$index"></td>
             <td ng-bind="record.label"></td>
             <td ng-bind="record.tags"></td>

@@ -8,18 +8,22 @@
   var deps = [
     '$scope', '$routeParams',
     '$location', '$notifications',
-    'lightRest'
+    'lightRest', '$timeout',
   ];
 
-  function TagCtrl($scope, $routeParams, $location, $notifs, $rest) {
+  function TagCtrl($scope, $routeParams, $location, $notifs, $rest, $timeout) {
 
     var action = $scope.action = $routeParams.action;
     var tagId = $routeParams.tagId;
 
+    $scope.watchingExp = 'tag.label + tag.description';
+
     switch(action) {
       case 'new':
-        $scope.record = {};
-        startWatchingChange();
+        $scope.tag = {};
+        $timeout(function() {
+          $scope.$broadcast('start-watching');
+        }, 1000);
         break;
       case 'edit':
       case 'view':
@@ -27,8 +31,8 @@
           $rest.get('/api/tags/:tagId', {tagId: tagId})
             .then(function(tag) {
               $scope.tag = tag;
-            })
-            .then(startWatchingChange);
+              $scope.$broadcast('start-watching');
+            });
         } else {
           $location.path('/tag/new');
         }
@@ -37,37 +41,24 @@
         $location.path('/tag/new');
     }
 
-    var unwatch;
-    function detectModification(newVal, oldVal) {
-      if(oldVal !== newVal) {
-        $scope.saveRequired = true;
-      }
-    };
-    
-    function startWatchingChange() {
-      unwatch = $scope.$watch(
-        'tag.label + tag.description',
-        detectModification
-      );
-    }
-
     function saveHandler() {
-        $notifs.add('Sauvegardé !', '', $notifs.SUCCESS);
-        $scope.saveRequired = false;
-        startWatchingChange();
-      }
+      $notifs.add('Sauvegardé !', '', $notifs.SUCCESS);
+      $scope.$broadcast('reset-watching');
+    }
 
     $scope.save = function() {
       var isNew = !('_id' in $scope.tag);
-      if(typeof unwatch === 'function') {
-        unwatch();
-      }
+      $scope.$broadcast('stop-watching');
       if(isNew) {
         $rest.post('/api/tags', $scope.tag).then(saveHandler);
       } else {
         $rest.put('/api/tags/:_id', $scope.tag).then(saveHandler);
       }
-    }
+    };
+
+    $scope.canDelete = function() {
+      return $scope.tag && ('_id' in $scope.tag);
+    };
 
   }
 

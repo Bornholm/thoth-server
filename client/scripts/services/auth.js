@@ -11,8 +11,8 @@
               var auth = {};
 
               auth.ping = function() {
-                  return $rest.get('/api/auth/ping')
-                    .then($rootScope.$broadcast.bind($rootScope, 'login'));
+                return $rest.get('/api/auth/ping')
+                  .then($rootScope.$broadcast.bind($rootScope, 'login'));
               };
 
               auth.login = function(username, password) {
@@ -30,9 +30,9 @@
               };
 
               auth.logout = function() {
-                  var encoded = w.btoa('bye:bye');
-                  $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
-                  return $http.get('/api/auth/logout');
+                var encoded = w.btoa('bye:bye');
+                $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
+                return $http.get('/api/auth/logout');
               };
 
               auth.isAdmin = function() {

@@ -1,0 +1,12 @@
+<div class="col-lg-12" ng-controller="ButtonBarCtrl">
+    <button ng-hide="!save" ng-disabled="!saveRequired && !canSave()" ng-class="{'btn-default': !saveRequired, 'btn-success': saveRequired}" class="btn pull-right" ng-click="save()">
+      <span ng-show="saveRequired">
+        <span translate="BUTTONBAR.SAVE"></span> <span class="glyphicon glyphicon-floppy-disk"></span>
+      </span>
+      <span ng-hide="saveRequired">
+        <span translate="BUTTONBAR.SAVED"></span> <span class="glyphicon glyphicon-ok"></span></span>
+    </button>
+  <button ng-hide="!delete" ng-click="delete()" ng-disabled="!canDelete()" class="btn btn-danger">
+    <span translate="BUTTONBAR.DELETE"></span> <span class="glyphicon glyphicon-trash"></span>
+  </button>
+</div>

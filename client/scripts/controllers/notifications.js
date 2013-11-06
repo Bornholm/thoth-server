@@ -8,9 +8,7 @@
 			'$scope', '$notifications', '$timeout',
 			function($scope, $notifs, $to) {
 
-			$scope.notifications = $notifs.getNotifications();
-			
-			var shift = function() {
+			function shift() {
 				var n;
 				var i = 0;
 				while(i < $scope.notifications.length) {
@@ -21,13 +19,16 @@
 					}
 					++i;
 				}
-			};
+			}
 
 			$scope.$watch('notifications', function(newVal, oldVal) {
-				if(newVal.length > oldVal.length) {
+				if(newVal.length) {
 					$to(shift, 5000);
 				}
 			}, true);
+
+			$scope.notifications = $notifs.getNotifications();
+
 		}]);
 
 }(window))

@@ -6,22 +6,28 @@
 	var deps = [
 		'$scope', 'lightRest',
 		'$routeParams', '$location',
-		'$notifications', '$translate'
+		'$notifications', '$translate',
+		'$timeout'
 	];
 
 	function RecordCtrl(
 		$scope, $rest,
 		$routeParams, $location,
-		$notifs, $translate
+		$notifs, $translate,
+		$timeout
 	) {
 
 		var action = $scope.action = $routeParams.action;
 		var recordId = $routeParams.recordId;
 
+		$scope.watchingExp = 'record.label + record.tags + record.text';
+
 		switch(action) {
 			case 'new':
 				$scope.record = {};
-				startWatchingChange();
+				$timeout(function() {
+					$scope.$broadcast('start-watching');
+				}, 1000);
 				break;
 			case 'edit':
 			case 'view':
@@ -29,8 +35,8 @@
 					$rest.get('/api/records/:recordId', {recordId: recordId})
 						.then(function(record) {
 							$scope.record = record;
-						}, $scope.serverErrorHandler)
-						.then(startWatchingChange);
+							$scope.$broadcast('start-watching');
+						}, $scope.serverErrorHandler);
 				} else {
 					$location.path('/record/new');
 				}
@@ -38,26 +44,11 @@
 			default:
 				$location.path('/record/new');
 		}
-
-		var unwatch;
-		function detectModification(newVal, oldVal) {
-			if(oldVal !== newVal) {
-				$scope.saveRequired = true;
-			}
-		};
 		
-		function startWatchingChange() {
-			unwatch = $scope.$watch(
-				'record.label + record.tags + record.text',
-				detectModification
-			);
-		}
-
 		function saveHandler(record) {
 			$notifs.add($translate('GLOBAL.SAVED'), '', $notifs.SUCCESS);
 			$scope.record = record;
-			$scope.saveRequired = false;
-			startWatchingChange();
+			$scope.$broadcast('reset-watching');
 		}
 
 		function deleteHandler() {
@@ -67,9 +58,7 @@
 
 		$scope.save = function() {
 			var isNew = !('_id' in $scope.record);
-			if(typeof unwatch === 'function') {
-				unwatch();
-			}
+			$scope.$broadcast('stop-watching');
 			if(isNew) {
 				$rest.post('/api/records', $scope.record)
 					.then(saveHandler, $scope.serverErrorHandler);
@@ -86,6 +75,10 @@
 					.then(deleteHandler, $scope.serverErrorHandler);
 			}
 		};
+
+		$scope.canDelete = function() {
+      return ('_id' in $scope.record);
+    };
 
 		$rest.get('/api/tags').then(function(tags) {
 			$scope.tagsAvailable = tags;

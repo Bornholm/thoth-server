@@ -6,6 +6,7 @@
     <!-- Style -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/thoth.css" rel="stylesheet">
+    <link href="css/ng-animation.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="bower_components/bootstrap/assets/js/html5shiv.js"></script>
@@ -14,7 +15,7 @@
   </head>
   <body>
     <ng-include ng-cloak ng-show="isNavbarVisible" src="'templates/navbar.html'"></ng-include>
-    <div id="content" class="container" ng-cloak ng-view></div>
+    <div id="content" class="container toggle" ng-cloak ng-view></div>
     <ng-include ng-cloak src="'templates/notifications.html'"></ng-include>
     <!-- Libraries -->
     <script type="text/javascript" src="bower_components/async/lib/async.js"></script>
@@ -23,6 +24,8 @@
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <!-- Modules -->
+    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-translate/angular-translate.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-translate/angular-translate.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-translate/angular-translate.min.js"></script>
@@ -38,9 +41,11 @@
     <!-- Services -->
     <script type="text/javascript" src="scripts/services/auth.js"></script>
     <script type="text/javascript" src="scripts/services/notifications.js"></script>
+    <script type="text/javascript" src="scripts/services/error-interceptor.js"></script>
     <!-- Directives -->
     <script type="text/javascript" src="scripts/directives/tag-input.js"></script>
     <!-- Controllers -->
+    <script type="text/javascript" src="scripts/controllers/buttonbar.js"></script>
     <script type="text/javascript" src="scripts/controllers/navbar.js"></script>
     <script type="text/javascript" src="scripts/controllers/profile.js"></script>
     <script type="text/javascript" src="scripts/controllers/login.js"></script>
