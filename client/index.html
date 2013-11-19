@@ -14,8 +14,8 @@
     <![endif]-->
   </head>
   <body>
-    <ng-include ng-cloak ng-show="isNavbarVisible" src="'templates/navbar.html'"></ng-include>
-    <div id="content" class="container toggle" ng-cloak ng-view></div>
+    <ng-include ng-cloak ng-show="isNavbarVisible" src="'templates/navbar.html'" class="toggle"></ng-include>
+    <div id="content" class="container" ng-cloak ng-view></div>
     <ng-include ng-cloak src="'templates/notifications.html'"></ng-include>
     <!-- Libraries -->
     <script type="text/javascript" src="bower_components/async/lib/async.js"></script>

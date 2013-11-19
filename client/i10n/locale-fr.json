@@ -47,7 +47,8 @@
     "PROFILE": "Profil",
     "NEW_RECORD": "Nouvel enregistrement",
     "ADMIN": "Administration",
-    "RECORD_SEARCH": "Chercher des enregistrements..."
+    "RECORD_SEARCH": "Chercher des enregistrements...",
+    "TOGGLE_NAV": "Afficher/Cacher la navigation"
   },
   "ROLE_PAGE": {
     "ROLE_NAME": "Nom du rôle",
@@ -78,7 +79,9 @@
     "DOWNLOAD_ALL": "Tout télécharger",
     "DOWNLOAD": "Télécharger",
     "YOUR_PASSPHRASE": "Votre phrase secrète",
-    "OPENSSL_HELP": "Pour déchiffrer, utiliser"
+    "OPENSSL_HELP": "Pour déchiffrer, utiliser",
+    "NEXT": "Suivant",
+    "PREVIOUS": "Précédent"
   },
   "PROFILE_PAGE": {
     "EMAIL": "Email",

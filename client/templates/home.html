@@ -38,13 +38,31 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-click="viewRecord(record._id)" ng-repeat="record in records" class="record-item toggle">
-            <td ng-bind="$index"></td>
+          <tr ng-click="viewRecord(record._id)" ng-repeat="record in records" class="record-item">
+            <td ng-bind="search.skip + $index"></td>
             <td ng-bind="record.label"></td>
             <td ng-bind="record.tags"></td>
           </tr>
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <ul class="pager">
+      <li class="previous" ng-class="{disabled: search.skip === 0}">
+        <a ng-href="#/home?skip={{search.prevSkip}}&limit={{search.limit}}&search={{search.search}}">&larr; {{'HOME_PAGE.PREVIOUS' | translate}}</a>
+      </li>
+      <li class="next" ng-class="{disabled: (search.skip + search.limit) > totalRecords}">
+        <a ng-href="#/home?skip={{search.nextSkip}}&limit={{search.limit}}&search={{search.search}}">{{'HOME_PAGE.NEXT' | translate}} &rarr;</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 center">
+    <p ng-cloak>{{search.skip}}-{{search.skip+search.limit}}/{{totalRecords}}</p>
   </div>
 </div>

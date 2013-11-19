@@ -16,12 +16,23 @@ Caractéristiques (futures)
 - Différentes méthodes d'authentification (locale, LDAP...)
 - API REST
 
+Installation
+------------
+
+```
+git clone http://forge-dev.in.ac-dijon.fr/git/thoth
+cd thoth
+npm install
+CONFIG_FILE=config/$(hostname).yaml
+touch ${CONFIG_FILE} # Remplacer vos paramètres de configuration dans ce fichier
+```
+
 
 Dépendances
 -----------
 
-- NodeJS
-- MongoDB
+- [NodeJS](http://nodejs.org/)
+- [MongoDB](http://www.mongodb.org/)
 
 Licence
 -------

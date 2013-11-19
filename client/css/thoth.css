@@ -10,6 +10,10 @@
   color: #777;
 }
 
+.center {
+  text-align: center;
+}
+
 .logo.small {
   height: 30px;
 }

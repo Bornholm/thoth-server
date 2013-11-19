@@ -48,7 +48,8 @@
     "PROFILE": "Profile",
     "NEW_RECORD": "New Record",
     "ADMIN": "Admin",
-    "RECORD_SEARCH": "Search for records..."
+    "RECORD_SEARCH": "Search for records...",
+    "TOGGLE_NAV": "Toggle Nav"
   },
   "ROLE_PAGE": {
     "ROLE_NAME": "Role Name",
@@ -81,7 +82,9 @@
     "DOWNLOAD_ALL": "Download All",
     "DOWNLOAD": "Download",
     "YOUR_PASSPHRASE": "Your passphrase...",
-    "OPENSSL_HELP": "To decrypt, use"
+    "OPENSSL_HELP": "To decrypt, use",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous"
   },
   "PROFILE_PAGE": {
     "EMAIL": "Email",
