@@ -31,7 +31,7 @@ log:
   colorize: False
   timestamp: True
 
-# Plugins configuration
+# Plugins configuration, see https://github.com/Bornholm/armature for plugin structure
 plugins:
   thoth-password-auth:
     path: ./plugins/thoth-password-auth

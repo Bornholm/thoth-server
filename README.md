@@ -1,20 +1,28 @@
 Thoth
 =====
 
-Application de gestion des mots de passe
+![Thoth](./client/img/logo.svg)
 
-__/!\ Thoth est actuellement en phase de conception & développement. NE PAS UTILISER EN PRODUCTION !__
+Application de gestion d'informations confidentielles.
 
-
-Caractéristiques (futures)
---------------------------
+Caractéristiques
+----------------
 
 - Données chiffrées en base de données (AES256 par défaut)
-- Mot de passe de chiffrage non stocké sur le disque (demandé au lancement du serveur uniquement)
-- Gestion des droits d'accès via catégories
-- Système de plugins
-- Différentes méthodes d'authentification (locale, LDAP...)
+- Gestion des droits d'accès via rôles & hiérarchie de catégories
+- Recherche via labels des ressources et tags associés
+- Différentes méthodes d'authentification via système de plugins (locale, LDAP...)
+- Export des ressources au format texte, chiffré par défaut avec mot de passe personnel
+- Administration via interface en ligne de commande
 - API REST
+- Client Web (optionel)
+- Client en ligne de commande (pas encore implémenté)
+
+Dépendances
+-----------
+
+- [Nodejs](http://nodejs.org/) - testé en version 0.10.22
+- [MongoDB](http://www.mongodb.org/) - testé en version 2.4.8
 
 Installation
 ------------
@@ -23,10 +31,54 @@ Installation
 git clone http://forge-dev.in.ac-dijon.fr/git/thoth
 cd thoth
 npm install
-CONFIG_FILE=config/$(hostname).yaml
-touch ${CONFIG_FILE} # Remplacer vos paramètres de configuration dans ce fichier
+touch config/$(hostname).yaml # Définir vos paramètres de configuration dans ce fichier
 ```
 
+Configuration
+-------------
+
+L'application charge les fichiers de configuration (si ils existent) du dossier `config` dans l'ordre suivant
+
+1. defaults.yaml
+2. $(hostname).yaml
+3. ${NODE_ENV}.yaml
+
+
+- Chaque fichier de configuration *écrase* les propriétés du fichier précédemment chargé.
+- Le fichier `defaults.yaml` fournit l'ensemble des paramètres de configuration disponibles.
+- Vous pouvez surcharger le dossier racine de configuration en passant le paramètre `--configDir <chemin_dossier>` à l'application
+
+Administration
+--------------
+
+L'administration de l'application se fait via l'outil en ligne de commande interactif accessible dans le dossier `bin`
+
+**Usage**
+```
+cd thoth
+./bin/thoth <command>
+```
+
+*Le mot de passe de chiffrement de la base de données sera demandé à chaque lancement d'une nouvelle commande !*
+
+### Commandes par défaut
+
+- **add-role** Ajoute un des rôles présent dans la configuration à un utilisateur enregistré
+- **remove-role** Retire un rôle à un utilisateur
+
+Production
+----------
+
+Un des moyens de mettre en production l'application est de passer par un moniteur de processus comme [Forever](https://github.com/nodejitsu/forever).
+
+**Exemple**
+```
+sudo npm install forever -g
+cd thoth
+forever start -e logs/thoth-err.log -o logs/thoth.log app.js -p <db_password>
+```
+
+L'application sera lancée en tant que démon et `forever` relancera automatiquement cette dernière si elle s'arrête de manière involontaire. D'autres arguments sont utilisables afin d'affiner le comportement de `forever`, voir la documentation du projet pour plus d'informations.
 
 Dépendances
 -----------
