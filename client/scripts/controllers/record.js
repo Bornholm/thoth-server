@@ -20,7 +20,7 @@
 		var action = $scope.action = $routeParams.action;
 		var recordId = $routeParams.recordId;
 
-		$scope.watchingExp = 'record.label + record.tags + record.text';
+		$scope.watchingExp = 'record.label + record.tags + record.text + record.category';
 
 		switch(action) {
 			case 'new':
@@ -32,11 +32,11 @@
 			case 'edit':
 			case 'view':
 				if(recordId) {
-					$rest.get('/api/records/:recordId', {recordId: recordId})
+					$rest.get('/records/:recordId', {recordId: recordId})
 						.then(function(record) {
 							$scope.record = record;
 							$scope.$broadcast('start-watching');
-						}, $scope.serverErrorHandler);
+						});
 				} else {
 					$location.path('/record/new');
 				}
@@ -44,6 +44,13 @@
 			default:
 				$location.path('/record/new');
 		}
+
+		var op = action === 'new' ? 'CREATE' : 'UPDATE';
+		$rest
+			.get('/records/categories', null, {params: {op: op}})
+			.then(function(categories) {
+				$scope.categories = categories;
+			});
 		
 		function saveHandler(record) {
 			$notifs.add($translate('GLOBAL.SAVED'), '', $notifs.SUCCESS);
@@ -60,10 +67,10 @@
 			var isNew = !('_id' in $scope.record);
 			$scope.$broadcast('stop-watching');
 			if(isNew) {
-				$rest.post('/api/records', $scope.record)
+				$rest.post('/records', $scope.record)
 					.then(saveHandler, $scope.serverErrorHandler);
 			} else {
-				$rest.put('/api/records/:_id', $scope.record)
+				$rest.put('/records/:_id', $scope.record)
 					.then(saveHandler, $scope.serverErrorHandler);
 			}
 		};
@@ -71,7 +78,7 @@
 		$scope.delete = function() {
 			var validateDelete = w.confirm($translate('RECORD_PAGE.DELETE_CONFIRM'));
 			if(validateDelete) {
-				$rest.delete('/api/records/:_id', $scope.record)
+				$rest.delete('/records/:_id', $scope.record)
 					.then(deleteHandler, $scope.serverErrorHandler);
 			}
 		};
@@ -79,10 +86,6 @@
 		$scope.canDelete = function() {
       return ('_id' in $scope.record);
     };
-
-		$rest.get('/api/tags').then(function(tags) {
-			$scope.tagsAvailable = tags;
-		}, $scope.serverErrorHandler);
 
 	}
 

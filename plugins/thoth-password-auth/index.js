@@ -52,9 +52,7 @@ module.exports = exports = {
             return cb(null, false);
           }
         });
-      },
-
-      register: function(username, password, cb) {}
+      }
 
     });
 

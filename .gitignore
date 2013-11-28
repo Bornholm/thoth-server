@@ -1,8 +1,6 @@
 node_modules/
 bower_components/
 ssl-test/
+logs/
 *.log
-config/runtime.json
-config/wpetit.json
-config/david.json
 .hmac

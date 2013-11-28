@@ -13,12 +13,8 @@
 		$scope.tryLogin = function(username, password) {
 			$auth.login(username, password)
 				.then(function(user) {
-					if($scope.nextUrl) {
-						$location.url($scope.nextUrl);
-					} else {
-						$location.path('/home');
-					}
-				}, $scope.serverErrorHandler);
+					$location.path('/home');
+				});
 		};
 
 	}

@@ -15,10 +15,10 @@
 
 	Thoth.config([
 		'$routeProvider', '$locationProvider', '$httpProvider',
-		'$translateProvider',
+		'$translateProvider', 'lightRestProvider', 'config',
 		function(
 			$routeProvider, $locationProvider, $httpProvider,
-			$translateProvider
+			$translateProvider, $lightRestProvider, config
 		) {
 
 		$translateProvider.useStaticFilesLoader({
@@ -26,8 +26,8 @@
 			suffix: '.json'
 		});
 
-		$translateProvider.preferredLanguage('en');
-		$translateProvider.fallbackLanguage('en');
+		$translateProvider.preferredLanguage(config.languages.preferred);
+		$translateProvider.fallbackLanguage(config.languages.preferred);
 		$translateProvider.useLocalStorage();
 			
 			$routeProvider.when('/login', {
@@ -55,37 +55,14 @@
 				controller: 'RecordCtrl'
 			});
 
-			$routeProvider.when('/role/:roleId/:action', {
-				templateUrl: 'templates/role.html',
-				controller: 'RoleCtrl'
-			});
-
-			$routeProvider.when('/role/:action', {
-				templateUrl: 'templates/role.html',
-				controller: 'RoleCtrl'
-			});
-
-			$routeProvider.when('/admin', {
-				templateUrl: 'templates/admin.html',
-				controller: 'AdminCtrl'
-			});
-
-			$routeProvider.when('/tag/:tagId/:action', {
-				templateUrl: 'templates/tag.html',
-				controller: 'TagCtrl'
-			});
-
-			$routeProvider.when('/tag/:action', {
-				templateUrl: 'templates/tag.html',
-				controller: 'TagCtrl'
-			});
-
 			$routeProvider.otherwise({redirectTo: '/home'});
 
 			$routeProvider.html5Mode = false;
 
 			$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 			$httpProvider.interceptors.push('errorInterceptor');
+
+			$lightRestProvider.setBaseURL(config.apiBaseURL);
 
 	}]);
 
@@ -110,10 +87,6 @@
 				}
 				
 			});
-
-			if($location.path() !== '/login') {
-				$rootScope.nextUrl = $location.url();
-			}
 
 			var last401Error = 0;
 			$rootScope.$on('server-error', function(evt, errorName, res) {

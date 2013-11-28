@@ -10,14 +10,6 @@
       '$translate', '$location',
       function($scope, $rootScope, $auth, $translate, $location) {
 
-      var adminItem = {
-        label: 'NAVBAR.ADMIN',
-        icon: 'glyphicon-wrench',
-        href: '#/admin',
-        isVisible: false,
-        isActive: false
-      };
-
       $scope.nav = [
         {
           label: 'NAVBAR.NEW_RECORD',
@@ -32,8 +24,7 @@
           href: '#/profile/me',
           isVisible: true,
           isActive: false
-        },
-        adminItem
+        }
       ];
 
       $rootScope.$on('login', function() {
@@ -51,9 +42,6 @@
       };
 
       $scope.$auth = $auth;
-      $scope.$watch('$auth.user', function(user) {
-        adminItem.isVisible = $auth.isAdmin();
-      });
 
     }]);
 

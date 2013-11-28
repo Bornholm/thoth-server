@@ -78,7 +78,7 @@ module.exports = function(pluginOpts, api, client) {
                 }
 
                 cache.set(credentialsHash, userDn, cacheTimeout);
-                if(user && autoComplete) {
+                if(user) {
                   var nameField = pluginOpts.nameField;
                   var emailField = pluginOpts.emailField;
                   user.name = entry.object[nameField];
@@ -113,10 +113,6 @@ module.exports = function(pluginOpts, api, client) {
         });
       }
 
-    },
-
-    register: function(username, password, cb) {
-      cb();
     }
     
   });

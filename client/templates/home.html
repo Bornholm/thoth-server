@@ -21,7 +21,7 @@
   </div>
   <div class="col-lg-6">
     <span translate="HOME_PAGE.OPENSSL_HELP"></span>
-    <pre>openssl enc -d -a -&lt;algorithm&gt; -nosalt -k &lt;passphrase&gt; -in &lt;encrypted_file&gt; -out &lt;output_file&gt;</pre>
+    <pre>openssl enc -d -&lt;algorithm&gt; -nosalt -k &lt;passphrase&gt; -in &lt;encrypted_file&gt; -out &lt;output_file&gt;</pre>
   </div>
 </div>
 
@@ -34,6 +34,7 @@
           <tr>
             <th>#</th>
             <th translate="HOME_PAGE.LABEL"></th>
+            <th translate="HOME_PAGE.CATEGORY"></th>
             <th translate="HOME_PAGE.TAGS"></th>
           </tr>
         </thead>
@@ -41,6 +42,7 @@
           <tr ng-click="viewRecord(record._id)" ng-repeat="record in records" class="record-item">
             <td ng-bind="search.skip + $index"></td>
             <td ng-bind="record.label"></td>
+            <td ng-bind="record.category.join('/')"></td>
             <td ng-bind="record.tags"></td>
           </tr>
         </tbody>
@@ -63,6 +65,6 @@
 </div>
 <div class="row">
   <div class="col-lg-12 center">
-    <p ng-cloak>{{search.skip}}-{{search.skip+search.limit}}/{{totalRecords}}</p>
+    <p ng-cloak>{{search.skip}}-{{min(search.skip+search.limit, totalRecords)}}/{{totalRecords}}</p>
   </div>
 </div>

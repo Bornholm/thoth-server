@@ -31,14 +31,6 @@ log:
   colorize: False
   timestamp: True
 
-# Default access rights
-accessRights:
-  defaultPermissions:
-    - op: read
-      q:
-        type: Tag
-  defaultRoles:
-
 # Plugins configuration
 plugins:
   thoth-password-auth:
@@ -46,4 +38,15 @@ plugins:
     options:
       rounds: 10
 
+rbac:
 
+  # admin:
+
+  #   - action: READ
+  #     subject: Record
+  #   - action: UPDATE
+  #     subject: Record
+  #   - action: CREATE
+  #     subject: Record
+  #   - action: DELETE
+  #     subject: Record

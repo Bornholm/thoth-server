@@ -6,7 +6,7 @@ var algorithm = "aes-256-cbc";
 var data = "Test";
 
 console.log('data:', data);
-console.log('algorithm:', password);
+console.log('algorithm:', algorithm);
 console.log('password:', password);
 
 var crypto = require("crypto");

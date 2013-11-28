@@ -70,7 +70,8 @@
     "LAST_UPDATE": "Dernière mise à jour",
     "REVISION": "Révision",
     "CREATION_DATE": "Date de création",
-    "META": "Métadonnées"
+    "META": "Métadonnées",
+    "CATEGORY": "Catégorie"
   },
   "HOME_PAGE": {
     "LABEL": "Label",
@@ -81,7 +82,8 @@
     "YOUR_PASSPHRASE": "Votre phrase secrète",
     "OPENSSL_HELP": "Pour déchiffrer, utiliser",
     "NEXT": "Suivant",
-    "PREVIOUS": "Précédent"
+    "PREVIOUS": "Précédent",
+    "CATEGORY": "Catégorie"
   },
   "PROFILE_PAGE": {
     "EMAIL": "Email",

@@ -72,7 +72,8 @@
     "LAST_UPDATE": "Last Update",
     "REVISION": "Revision",
     "CREATION_DATE": "Creation Date",
-    "META": "Metadata"
+    "META": "Metadata",
+    "CATEGORY": "Category"
   },
   "HOME_PAGE": {
     "LABEL": "Label",
@@ -84,7 +85,8 @@
     "YOUR_PASSPHRASE": "Your passphrase...",
     "OPENSSL_HELP": "To decrypt, use",
     "NEXT": "Next",
-    "PREVIOUS": "Previous"
+    "PREVIOUS": "Previous",
+    "CATEGORY": "Category"
   },
   "PROFILE_PAGE": {
     "EMAIL": "Email",

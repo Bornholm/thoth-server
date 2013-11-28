@@ -6,13 +6,13 @@
 	angular.module('Thoth')
 		.controller('HomeCtrl', [
 			'$scope', 'lightRest',
-      '$location', '$timeout',
-			function($scope, $rest, $location, $timeout) {
+      '$location', '$timeout', 'config',
+			function($scope, $rest, $location, $timeout, config) {
 
         $scope.totalRecords = 0;
         var search = $scope.search = $location.search() || {};
 
-        search.recordsPerPage = 2;
+        search.recordsPerPage = config.recordsPerPage || 5;
         search.prevDisabled = true;
         search.nextDisabled = true;
         search.skip = +search.skip || 0;
@@ -22,7 +22,7 @@
         search.nextSkip = search.skip+search.limit;
         search.prevSkip = search.skip-search.limit < 0 ? 0 : search.skip-search.limit;
 
-				$rest.get('/api/records', null, {
+				$rest.get('/records', null, {
           params: {
             search: search.search,
             limit: search.limit,
@@ -33,7 +33,7 @@
             $scope.records = records;
           });
 
-        $rest.get('/api/records/stats', null,{
+        $rest.get('/records/stats', null,{
             params: {
               search: search.search
             }
@@ -54,6 +54,10 @@
           $timeout(function() {
             $scope.passphrase = "";
           }, 0);
+        };
+
+        $scope.min = function() {
+          return Math.min.apply(Math, arguments);
         };
 
         $scope.viewRecord = function(recordId) {

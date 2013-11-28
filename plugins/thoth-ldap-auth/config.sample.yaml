@@ -13,6 +13,5 @@ plugins:
       filter: uid=${username}
       validator: ^[A-Za-z-_0-9]+$
       cacheTimeout: 30000
-      autoComplete: True
       emailField: email
       nameField: givenName
