@@ -43,7 +43,9 @@
             <td ng-bind="search.skip + $index"></td>
             <td ng-bind="record.label"></td>
             <td ng-bind="record.category.join('/')"></td>
-            <td ng-bind="record.tags"></td>
+            <td>
+              <span class="tag label label-default" ng-repeat="tag in record.tags" ng-bind="tag"></span>
+            </td>
           </tr>
         </tbody>
       </table>

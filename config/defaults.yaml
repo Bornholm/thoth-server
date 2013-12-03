@@ -13,40 +13,23 @@ server:
   serveClient: True
   # Use HTTPS ? (if key & cert specified, automatically use HTTPS)
   ssl:
-    key:
-    cert:
-    pfx:
-
-# Auth backend, see plugins
-auth: local
+    key: # Path to key
+    cert: # Path to certificate
+    pfx: # 
 
 encryption:
+  passphrase: # Passphrase
   # Encryption algorithm to use
   algorithm: aes256
   # Path to store the passphrase verification HMAC
-  hmacPath: ./.hmac
+  hmacPath: .hmac # Pass to the hmac used to detect passphrase change
 
 log:
   level: info
-  colorize: False
-  timestamp: True
-
-# Plugins configuration, see https://github.com/Bornholm/armature for plugin structure
-plugins:
-  thoth-password-auth:
-    path: ./plugins/thoth-password-auth
-    options:
-      rounds: 10
+  colorize: False # Use ANSI colors in logs
+  timestamp: True # Timestamp log outputs
 
 rbac:
-
-  # admin:
-
-  #   - action: READ
-  #     subject: Record
-  #   - action: UPDATE
-  #     subject: Record
-  #   - action: CREATE
-  #     subject: Record
-  #   - action: DELETE
-  #     subject: Record
+  admin: # can do everything on everything
+    - action: '*'
+      subject: '*'

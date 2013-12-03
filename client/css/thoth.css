@@ -31,6 +31,10 @@
   cursor: pointer;
 }
 
+.tag {
+  margin-right: 2px;
+}
+
 body, html {
 	width: 100%;
 	font-family: 'Droid Sans', 'Ubuntu Sans', 'sans-serif';

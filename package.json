@@ -2,6 +2,7 @@
   "name": "toth",
   "version": "0.0.0",
   "description": "Password management application",
+  "repository": "http://forge-dev.in.ac-dijon.fr/git/thoth",
   "main": "app.js",
   "dependencies": {
     "express": "~3.2.4",
@@ -13,7 +14,7 @@
     "sift": "0.0.12",
     "validator": "~1.2.1",
     "config": "~0.4.27",
-    "armature": "0.0.2",
+    "armature": "~0.0.2",
     "nconf": "~0.6.7",
     "archiver": "~0.4.10",
     "moment": "~2.3.1",

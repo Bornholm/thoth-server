@@ -10,9 +10,9 @@ Caractéristiques
 
 - Données chiffrées en base de données (AES256 par défaut)
 - Gestion des droits d'accès via rôles & hiérarchie de catégories
-- Recherche via labels des ressources et tags associés
+- Recherche via labels/catégories/mots clé des ressources
 - Différentes méthodes d'authentification via système de plugins (locale, LDAP...)
-- Export des ressources au format texte, chiffré par défaut avec mot de passe personnel
+- Export des ressources au format archive, chiffré par défaut avec mot de passe personnel
 - Administration via interface en ligne de commande
 - API REST
 - Client Web (optionel)
@@ -32,6 +32,17 @@ git clone http://forge-dev.in.ac-dijon.fr/git/thoth
 cd thoth
 npm install
 touch config/$(hostname).yaml # Définir vos paramètres de configuration dans ce fichier
+
+# Installer un plugin d'authentification - Exemple
+# local: npm install git+http://<user>:<password>@forge-dev.in.ac-dijon.fr/git/thoth-local-auth
+# ou
+# ldap: npm install git+http://<user>:<password>@forge-dev.in.ac-dijon.fr/git/thoth-ldap-auth
+# Voir ensuite le fichier config.sample.yaml dans le dossier node_modules/<plugin> pour un exemple de configuration
+
+# Si vous utilisez le client Web
+cd client
+sudo npm install bower -g
+bower install
 ```
 
 Configuration
@@ -43,28 +54,41 @@ L'application charge les fichiers de configuration (si ils existent) du dossier 
 2. $(hostname).yaml
 3. ${NODE_ENV}.yaml
 
-
-- Chaque fichier de configuration *écrase* les propriétés du fichier précédemment chargé.
-- Le fichier `defaults.yaml` fournit l'ensemble des paramètres de configuration disponibles.
+- Chaque fichier de configuration *surcharge* les propriétés du fichier précédemment chargé.
+- Se référer au fichier `defaults.yaml` pour voir les paramètres de configuration disponibles
 - Vous pouvez surcharger le dossier racine de configuration en passant le paramètre `--configDir <chemin_dossier>` à l'application
 
 Administration
 --------------
 
-L'administration de l'application se fait via l'outil en ligne de commande interactif accessible dans le dossier `bin`
+L'administration de l'application se fait via l'outil en ligne de commande accessible dans le dossier `bin`
 
 **Usage**
 ```
 cd thoth
-./bin/thoth <command>
-```
+./bin/thoth --help
+Usage: thoth [options] <command>
 
-*Le mot de passe de chiffrement de la base de données sera demandé à chaque lancement d'une nouvelle commande !*
+Options:
+
+  -h, --help                     output usage information
+  -V, --version                  output the version number
+  -p, --passphrase <passphrase>  specify the passphrase to use
+
+ Commands:
+
+  remove-role       Remove a selected role from a registered user
+  add-role          Add a selected role to a registered user
+  ldap:search-dn    Search LDAP for user's DN
+  ldap:create-user  Register a LDAP user with his DN
+```
 
 ### Commandes par défaut
 
 - **add-role** Ajoute un des rôles présent dans la configuration à un utilisateur enregistré
 - **remove-role** Retire un rôle à un utilisateur
+
+Chaque plugin peut apporter son propre lot de commandes supplémentaires.
 
 Production
 ----------
@@ -79,12 +103,6 @@ forever start -e logs/thoth-err.log -o logs/thoth.log app.js -p <db_password>
 ```
 
 L'application sera lancée en tant que démon et `forever` relancera automatiquement cette dernière si elle s'arrête de manière involontaire. D'autres arguments sont utilisables afin d'affiner le comportement de `forever`, voir la documentation du projet pour plus d'informations.
-
-Dépendances
------------
-
-- [NodeJS](http://nodejs.org/)
-- [MongoDB](http://www.mongodb.org/)
 
 Licence
 -------
