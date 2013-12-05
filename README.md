@@ -67,20 +67,28 @@ L'administration de l'application se fait via l'outil en ligne de commande acces
 ```
 cd thoth
 ./bin/thoth --help
-Usage: thoth [options] <command>
+info: Initializing models
+info: Connecting to database
+info: Load plugin=thoth-ldap-auth
+info: Starting CLI
 
-Options:
+  Usage: thoth [options] <namespace> <command>
 
-  -h, --help                     output usage information
-  -V, --version                  output the version number
-  -p, --passphrase <passphrase>  specify the passphrase to use
+  Options:
 
- Commands:
+    -h, --help                     output usage information
+    -V, --version                  output the version number
+    -p, --passphrase <passphrase>  specify the passphrase to use
 
-  remove-role       Remove a selected role from a registered user
-  add-role          Add a selected role to a registered user
-  ldap:search-dn    Search LDAP for user's DN
-  ldap:create-user  Register a LDAP user with his DN
+  Commands:
+
+    default
+      add-role      Add a selected role to a registered user
+      remove-role   Remove a selected role from a registered user
+
+    ldap-auth
+      register-user Register a LDAP user with his DN
+      search-dn     Search LDAP for user's DN
 ```
 
 ### Commandes par défaut
@@ -88,7 +96,7 @@ Options:
 - **add-role** Ajoute un des rôles présent dans la configuration à un utilisateur enregistré
 - **remove-role** Retire un rôle à un utilisateur
 
-Chaque plugin peut apporter son propre lot de commandes supplémentaires.
+Chaque plugin peut apporter son propre lot de commandes supplémentaires, dans son propre espace de nom.
 
 Production
 ----------
