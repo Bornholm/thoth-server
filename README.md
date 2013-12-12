@@ -3,7 +3,7 @@ Thoth
 
 ![Thoth](./client/img/logo.svg)
 
-Application de gestion d'informations confidentielles.
+Application de gestion d'informations.
 
 Caractéristiques
 ----------------
@@ -38,11 +38,7 @@ touch config/$(hostname).yaml # Définir vos paramètres de configuration dans c
 # ou
 # ldap: npm install git+http://<user>:<password>@forge-dev.in.ac-dijon.fr/git/thoth-ldap-auth
 # Voir ensuite le fichier config.sample.yaml dans le dossier node_modules/<plugin> pour un exemple de configuration
-
-# Si vous utilisez le client Web
-cd client
-sudo npm install bower -g
-bower install
+node app
 ```
 
 Configuration
@@ -54,9 +50,9 @@ L'application charge les fichiers de configuration (si ils existent) du dossier 
 2. $(hostname).yaml
 3. ${NODE_ENV}.yaml
 
-- Chaque fichier de configuration *surcharge* les propriétés du fichier précédemment chargé.
+- Chaque fichier de configuration *surcharge* les propriétés du fichier précédent.
 - Se référer au fichier `defaults.yaml` pour voir les paramètres de configuration disponibles
-- Vous pouvez surcharger le dossier racine de configuration en passant le paramètre `--configDir <chemin_dossier>` à l'application
+- Vous pouvez modifier le chemin par défaut du dossier de configuration en passant le paramètre `--configDir <chemin_dossier>` à l'application
 
 Administration
 --------------
