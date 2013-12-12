@@ -1,3 +1,9 @@
+body, html {
+  width: 100%;
+  font-family: 'Droid Sans', 'Ubuntu Sans', 'sans-serif';
+  background: url('../img/grey.png') repeat;
+}
+
 .ng-cloak {
 	display: none;
 }
@@ -35,10 +41,9 @@
   margin-right: 2px;
 }
 
-body, html {
-	width: 100%;
-	font-family: 'Droid Sans', 'Ubuntu Sans', 'sans-serif';
-  background: url('../img/grey.png') repeat;
+.tags-cell ul {
+  padding: 0;
+  margin: 0;
 }
 
 #content {
