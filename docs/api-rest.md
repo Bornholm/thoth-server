@@ -66,6 +66,114 @@ Show a record
   - **Code:** 401 UNAUTHORIZED <br />
     **Content:** `{ error: "InvalidCredentialsError" }`
 
+- **CURL Example**
+  ```
+  curl -v -u "${USER}:${PASSWORD}" "${THOTH_ENDPOINT}/api/records/${RECORD_ID}"
+  ```
+
+## Create a record
+
+- **URL**
+  
+  /api/records
+	
+- **Method**
+
+  `POST`
+
+- **URL Parameters**
+
+  `None`
+
+- **Data Params**
+
+  **Content-Type**: `application/json`
+  
+  Will create a new records with data fields.
+  
+	**Data Example**
+
+  ```
+  {
+    category: ['Parent Category', 'Sub category'],
+    label: "Record Label",
+    text: "My record text",
+    tags: ["tag #1", "tag #2"]
+  }
+  ```
+
+- **Success Response**
+
+  - **Code:** 200 <br />
+    **Content:** `{Record}`
+
+- **Error Response:**
+
+  - **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error: "InvalidCredentialsError" }`
+
+  OR
+
+  - **Code:** >=400 APPLICATION ERROR <br />
+    **Content:** `{ error: "<Error>" }`
+
+- **CURL Example**
+
+  ```
+  curl -v -X "POST" -u "${USER}:${PASSWORD}" -H 'Content-Type:application/json' -d '{"text": "Hello world !", "label": "Test", "category": ["Category A"]}' "${THOTH_ENDPOINT}/api/records"
+  ```
+
+## Update a record
+
+- **URL**
+  
+  /api/records/:id
+
+- **Method**
+
+  `PUT`
+
+- **URL Parameters**
+
+  **Required:**
+
+  `id=[alphanumeric]`
+
+- **Data Params**
+
+  **Content-Type**: `application/json`
+  
+  Will update only the existing field in data.
+  
+  **Data Example**
+```
+{
+	category: ['Parent Category', 'Sub category'],
+	label: "Record Label",
+	text: "My record text",
+    tags: ['tag #1', 'tag #2']
+}
+```
+
+- **Success Response**
+
+  - **Code:** 200 <br />
+    **Content:** `{Record}`
+
+- **Error Response:**
+
+  - **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error: "InvalidCredentialsError" }`
+
+  OR
+
+  - **Code:** >=400 APPLICATION ERROR <br />
+    **Content:** `{ error: "<Error>" }`
+
+- **CURL Example**
+```
+curl -v -X "PUT" -u "${USER}:${PASSWORD}" -H 'Content-Type:application/json' -d '{"text": "Hello world !", "label": "Test", "category": ["Category A"]}' "${THOTH_ENDPOINT}/api/records/${RECORD_ID}"
+```
 
 ## Show categories
 
@@ -96,3 +204,8 @@ Show available categories for the current user
 
   - **Code:** 401 UNAUTHORIZED <br />
     **Content:** `{ error: "InvalidCredentialsError" }`
+
+- **CURL Example**
+```
+curl -v -u "${USER}:${PASSWORD}" "${THOTH_ENDPOINT}/api/categories"
+```
