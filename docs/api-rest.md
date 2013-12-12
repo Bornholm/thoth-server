@@ -1,4 +1,6 @@
-# Show records
+# REST API
+
+## Show records
 
 Show a list of records available for the current user
 
@@ -14,10 +16,8 @@ Show a list of records available for the current user
 
   **Optional:**
 
-  `skip=[numeric]` 
-
-  `limit=[numeric]`
-
+  `skip=[numeric]` <br />
+  `limit=[numeric]` <br />
   `search=[alphanumeric]`
 
 - **Data Params**
@@ -34,7 +34,7 @@ Show a list of records available for the current user
   - **Code:** 401 UNAUTHORIZED <br />
     **Content:** `{ error: "InvalidCredentialsError" }`
 
-# Show one record
+## Show one record
 
 Show a record
 
@@ -67,12 +67,12 @@ Show a record
     **Content:** `{ error: "InvalidCredentialsError" }`
 
 
-# Show categories
+## Show categories
 
 Show available categories for the current user
 
 - **URL**
-  
+
   /api/records/categories
 
 - **Method**
