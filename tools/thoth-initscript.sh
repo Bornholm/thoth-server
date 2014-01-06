@@ -17,7 +17,7 @@ USER=www-data
 GROUP=www-data
 LOG=/var/log/thoth/thoth.log
 NODE_ENV=production
-APP_ROOT="/home/william/workspace/thoth"
+APP_ROOT="/var/node/thoth"
 NODE_BIN=/usr/bin/node
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
