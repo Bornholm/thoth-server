@@ -97,16 +97,6 @@ Chaque plugin peut apporter son propre lot de commandes supplémentaires, dans s
 Production
 ----------
 
-Un des moyens de mettre en production l'application est de passer par un moniteur de processus comme [Forever](https://github.com/nodejitsu/forever).
-
-**Exemple**
-```
-sudo npm install forever -g
-cd thoth
-forever start -e logs/thoth-err.log -o logs/thoth.log app.js -p <db_password>
-```
-
-L'application sera lancée en tant que démon et `forever` relancera automatiquement cette dernière si elle s'arrête de manière involontaire. D'autres arguments sont utilisables afin d'affiner le comportement de `forever`, voir la documentation du projet pour plus d'informations.
 
 Licence
 -------

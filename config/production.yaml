@@ -1,4 +1,4 @@
 log:
   colorize: False
-  level: warn
+  level: info
   timestamp: True

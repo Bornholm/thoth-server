@@ -104,7 +104,7 @@ Show a record
 
 - **Success Response**
 
-  - **Code:** 200 <br />
+  - **Code:** 201 <br />
     **Content:** `{Record}`
 
 - **Error Response:**
@@ -229,7 +229,11 @@ Show available categories for the current user
 
 - **URL Parameters**
 
-  `None`
+  - **URL Parameters**
+
+  **Required:**
+
+  `op=[CREATE|READ|UPDATE|DELETE]`
 
 - **Data Params**
 
@@ -247,7 +251,7 @@ Show available categories for the current user
 
 - **CURL Example**
 ```
-curl -v -u "${USER}:${PASSWORD}" "${THOTH_ENDPOINT}/api/categories"
+curl -v -u "${USER}:${PASSWORD}" "${THOTH_ENDPOINT}/api/categories?op=READ"
 ```
 
 ## Show user informations

@@ -2,7 +2,7 @@
   "name": "toth",
   "version": "0.0.0",
   "description": "Password management application",
-  "repository": "http://forge-dev.in.ac-dijon.fr/git/thoth",
+  "repository": "",
   "main": "app.js",
   "dependencies": {
     "express": "~3.2.4",
@@ -25,7 +25,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-  "repository": "",
   "author": "William PETIT - Rectorat de l'Académie de Dijon",
   "license": "AGPL"
 }

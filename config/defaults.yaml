@@ -18,7 +18,6 @@ server:
     pfx: # 
 
 encryption:
-  passphrase: # Passphrase
   # Encryption algorithm to use
   algorithm: aes256
   # Path to store the passphrase verification HMAC
