@@ -1,19 +1,15 @@
 #! /bin/bash
 ### BEGIN INIT INFO
-# Provides:          skeleton
+# Provides:          thoth
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Example initscript
-# Description:       This file should be used to construct scripts to be
-#                    placed in /etc/init.d.
+# Short-Description: Thoth initscript
+# Description:       
 ### END INIT INFO
 
-# Author: Foo Bar <foobar@baz.org>
-#
-# Please remove the "Author" lines above and replace them
-# with your own name if you copy and modify this script.
+# Author: William Petit <william.petit@ac-dijon.fr>
 
 # Do NOT "set -e"
 
@@ -41,8 +37,6 @@ SCRIPT_NAME=/etc/init.d/thoth
 # and status_of_proc is working.
 . /lib/lsb/init-functions
 
-VERBOSE=yes
-
 #
 # Function that starts the daemon/service
 #
@@ -51,6 +45,7 @@ do_start()
 	LOG_DIR="$(dirname $LOG)"
 	mkdir -p "$LOG_DIR"
 	chown -R $USER:$GROUP "$LOG_DIR"
+	echo
 	read -s -p "Enter passphrase: " PASSPHRASE
 	start-stop-daemon --start -q -d $APP_ROOT -p $PIDFILE --exec $SCRIPT --test > /dev/null \
 		|| return 1
