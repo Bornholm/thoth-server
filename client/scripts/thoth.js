@@ -102,8 +102,8 @@
 				}
 
 				$notifs.add(
-					$translate('ERROR.' + errorName + '.TITLE'),
-					$translate('ERROR.' + errorName + '.DESC'),
+					'ERROR.' + errorName + '.TITLE',
+					'ERROR.' + errorName + '.DESC',
 					$notifs.DANGER
 				);
 
@@ -116,8 +116,8 @@
 			// Warning if not HTTPS
 			if($window.location.protocol !== 'https:') {
 				$notifs.add(
-					$translate('UNENCRYPTED_CONNECTION.TITLE'),
-					$translate('UNENCRYPTED_CONNECTION.DESC'),
+					'GLOBAL.UNENCRYPTED_CONNECTION.TITLE',
+					'GLOBAL.UNENCRYPTED_CONNECTION.DESC',
 					$notifs.DANGER,
 					true
 				);

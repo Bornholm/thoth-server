@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row slide-top" ng-repeat="n in notifications | orderBy:'+$index' | orderBy:'-persistent'">
       <div class="col-md-6 col-md-offset-3 alert" ng-class="n.class">
-        <strong ng-bind="n.title"></strong><br /><span ng-bind="n.message"></span>
+        <strong translate="{{n.title}}"></strong><br /><span translate="{{n.message}}"></span>
       </div>
     </div>
   </div>

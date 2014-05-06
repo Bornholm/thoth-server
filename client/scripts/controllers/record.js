@@ -53,13 +53,13 @@
 			});
 		
 		function saveHandler(record) {
-			$notifs.add($translate('GLOBAL.SAVED'), '', $notifs.SUCCESS);
+			$notifs.add('GLOBAL.SAVED', '', $notifs.SUCCESS);
 			$scope.record = record;
 			$scope.$broadcast('reset-watching');
 		}
 
 		function deleteHandler() {
-			$notifs.add($translate('GLOBAL.DELETED'), '', $notifs.SUCCESS);
+			$notifs.add('GLOBAL.DELETED', '', $notifs.SUCCESS);
 			$location.path('/home');
 		}
 
