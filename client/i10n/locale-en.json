@@ -28,6 +28,14 @@
     "UnauthorizedError": {
       "TITLE": "Unauthorized !",
       "DESC": "You don't have the authorization to do this !"
+    },
+    "DuplicateKeyError": {
+      "TITLE": "Duplicate label !",
+      "DESC": "One record already exists in your database with this label."
+    },
+    "ValidationError": {
+      "TITLE": "Validation error !",
+      "DESC": "The server couldn't validate your data."
     }
   },
   "LANG": {

@@ -28,6 +28,14 @@
     "UnauthorizedError": {
       "TITLE": "Permission non accordée",
       "DESC": "Cette opération n'est pas autorisée pour votre compte."
+    },
+    "DuplicateKeyError": {
+      "TITLE": "Label déjà utilisé !",
+      "DESC": "Un enregistrement existe déjà avec ce label dans votre base de données."
+    },
+    "ValidationError": {
+      "TITLE": "Erreur de validation !",
+      "DESC": "Le serveur n'a pas réussi à valider votre enregistrement."
     }
   },
   "LANG": {

@@ -32,3 +32,19 @@ rbac:
   admin: # can do everything on everything
     - action: '*'
       subject: '*'
+
+export:
+  template: |
+    <%- label %>
+    ============
+
+    <%- text %>
+
+    Meta
+    ----
+    
+    - **Category**: <%- category %>
+    - **Creator:** <%- creator.email %>
+    - **Creation Date:** <%- creationDate %>
+    - **Last update:** <%- lastUpdate %>
+    - **Revision:** <%- revision %>

@@ -12,11 +12,11 @@ Caractéristiques
 - Gestion des droits d'accès via rôles & hiérarchie de catégories
 - Recherche via labels/catégories/mots clé des ressources
 - Différentes méthodes d'authentification via système de plugins (locale, LDAP...)
-- Export des ressources au format archive, chiffré par défaut avec mot de passe personnel
+- Export des ressources au format tar.gz, chiffré par défaut avec mot de passe personnel
 - Administration via interface en ligne de commande
 - API REST
 - Client Web (optionel)
-- Client en ligne de commande (pas encore implémenté)
+- Client en ligne de commande - Voir [Thoth - CLI](http://forge-dev.in.ac-dijon.fr/projects/thoth-cli-client)
 
 Dépendances
 -----------
@@ -32,11 +32,10 @@ git clone http://forge-dev.in.ac-dijon.fr/git/thoth
 cd thoth
 npm install
 touch config/$(hostname).yaml # Définir vos paramètres de configuration dans ce fichier
-
 # Installer un plugin d'authentification - Exemple
-# local: npm install git+http://<user>:<password>@forge-dev.in.ac-dijon.fr/git/thoth-local-auth
+# ldap: npm install git+http://forge-dev.in.ac-dijon.fr/git/thoth-ldap-auth
 # ou
-# ldap: npm install git+http://<user>:<password>@forge-dev.in.ac-dijon.fr/git/thoth-ldap-auth
+# local: npm install git+http://forge-dev.in.ac-dijon.fr/git/thoth-local-auth
 # Voir ensuite le fichier config.sample.yaml dans le dossier node_modules/<plugin> pour un exemple de configuration
 node app
 ```

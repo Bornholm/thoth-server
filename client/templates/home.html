@@ -13,7 +13,7 @@
       <div class="form-group">
         <input type="password" ng-model="passphrase" class="form-control" id="passphraseInput" placeholder="{{'HOME_PAGE.YOUR_PASSPHRASE' | translate}}">
       </div>
-      <a ng-click="resetPassphrase()" ng-disabled="!passphrase" download class="btn btn-success pull-right" ng-href="api/export/all?passphrase={{passphrase}}">
+      <a ng-click="resetPassphrase()" ng-disabled="!passphrase" target="_blank" class="btn btn-success pull-right" ng-href="api/export/all?passphrase={{passphrase}}">
         <span translate="HOME_PAGE.DOWNLOAD"></span>&nbsp;
         <span class="glyphicon glyphicon-download"></span>
       </a>
