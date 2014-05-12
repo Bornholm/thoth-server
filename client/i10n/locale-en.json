@@ -36,6 +36,10 @@
     "ValidationError": {
       "TITLE": "Validation error !",
       "DESC": "The server couldn't validate your data."
+    },
+    "DisconnectedDbError": {
+      "TITLE": "Database Error !",
+      "DESC": "Couldn't connect to the database."
     }
   },
   "LANG": {

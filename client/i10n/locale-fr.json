@@ -36,6 +36,10 @@
     "ValidationError": {
       "TITLE": "Erreur de validation !",
       "DESC": "Le serveur n'a pas réussi à valider votre enregistrement."
+    },
+    "DisconnectedDbError": {
+      "TITLE": "Erreur avec la base de données !",
+      "DESC": "Immpossible de se connecter à la base de données."
     }
   },
   "LANG": {

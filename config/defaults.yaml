@@ -1,5 +1,9 @@
-# MongoDB url
-database: mongodb://localhost/thoth
+# MongoDB Configuration
+database: 
+  uri: mongodb://localhost/thoth
+  options:
+    server:
+      auto_reconnect: True
 
 # Web server configuration
 server:
