@@ -64,6 +64,10 @@
           $location.path('/record/' + recordId + '/view');
         };
 
+				$scope.tri = function(value){
+					$scope.orderProp = value;	
+				};
+
 		  }
     ]);
 

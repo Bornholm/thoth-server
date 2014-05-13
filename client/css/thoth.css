@@ -108,3 +108,7 @@ tag-input .label .close {
 tag-input input:focus {
  outline: none;
 }
+
+th {
+	cursor: pointer;
+}

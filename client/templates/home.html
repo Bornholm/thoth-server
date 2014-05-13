@@ -33,13 +33,13 @@
         <thead>
           <tr>
             <th>#</th>
-            <th translate="HOME_PAGE.LABEL"></th>
-            <th translate="HOME_PAGE.CATEGORY"></th>
+            <th translate="HOME_PAGE.LABEL" ng-click="tri('label')"></th>
+            <th translate="HOME_PAGE.CATEGORY" ng-click="tri('category')"></th>
             <th translate="HOME_PAGE.TAGS"></th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-click="viewRecord(record._id)" ng-repeat="record in records" class="record-item">
+          <tr ng-click="viewRecord(record._id)" ng-repeat="record in records | orderBy:orderProp" class="record-item">
             <td ng-bind="search.skip + $index"></td>
             <td ng-bind="record.label"></td>
             <td ng-bind="record.category.join('/')"></td>
