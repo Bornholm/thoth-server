@@ -1,4 +1,51 @@
 {
+  "GLOBAL": {
+    "SAVED": "Saved !",
+    "DELETED": "Deleted !",
+    "UNENCRYPTED_CONNECTION": {
+      "TITLE": "Connection unencrypted !",
+      "DESC": "Your connection is unencrypted ! This can lead to a potential data breach."
+    }
+  },
+  "BUTTONBAR": {
+    "SAVE": "Save",
+    "SAVED": "Saved",
+    "DELETE": "Delete"
+  },
+  "ERROR": {
+    "UnknownError": {
+      "TITLE": "Unknown Error :(",
+      "DESC": "Please contact your administrator."
+    },
+    "InvalidCredentialsError": {
+      "TITLE": "Invalid credentials !",
+      "DESC": "Your credentials are invalid or your account is not yet activated."
+    },
+    "RevisionConflictError": {
+      "TITLE": "Revision Conflict !",
+      "DESC": "Your revision is conflicting with the one on the server. Please refresh your view."
+    },
+    "UnauthorizedError": {
+      "TITLE": "Unauthorized !",
+      "DESC": "You don't have the authorization to do this !"
+    },
+    "DuplicateKeyError": {
+      "TITLE": "Duplicate label !",
+      "DESC": "One record already exists in your database with this label."
+    },
+    "ValidationError": {
+      "TITLE": "Validation error !",
+      "DESC": "The server couldn't validate your data."
+    },
+    "DisconnectedDbError": {
+      "TITLE": "Database Error !",
+      "DESC": "Couldn't connect to the database."
+    }
+  },
+  "LANG": {
+    "FR": "French",
+    "EN": "English"
+  },
   "LOGIN_PAGE": {
     "YOUR_USERNAME": "Your username",
     "YOUR_PASSWORD": "Your password",
@@ -13,10 +60,8 @@
     "PROFILE": "Profile",
     "NEW_RECORD": "New Record",
     "ADMIN": "Admin",
-    "RECORD_SEARCH": "Search for records..."
-  },
-  "DEVBAR": {
-    "CLEAR_CACHE": "Clear cache"
+    "RECORD_SEARCH": "Search for records...",
+    "TOGGLE_NAV": "Toggle Nav"
   },
   "ROLE_PAGE": {
     "ROLE_NAME": "Role Name",
@@ -31,11 +76,16 @@
     "ADD": "Add"
   },
   "RECORD_PAGE": {
-    "SAVE_RECORD": "Save",
-    "RECORD_SAVED": "Saved",
     "LABEL": "Label",
     "TAGS": "Tags",
-    "TEXT": "Text (will be encrypted)"
+    "TEXT": "Text",
+    "DELETE_RECORD": "Delete",
+    "DELETE_CONFIRM": "You will delete this record. Are you sure ?",
+    "LAST_UPDATE": "Last Update",
+    "REVISION": "Revision",
+    "CREATION_DATE": "Creation Date",
+    "META": "Metadata",
+    "CATEGORY": "Category"
   },
   "HOME_PAGE": {
     "LABEL": "Label",
@@ -44,18 +94,23 @@
     "ACTIONS_AVAILABLE": "See/Edit/Delete",
     "DOWNLOAD_ALL": "Download All",
     "DOWNLOAD": "Download",
-    "YOUR_PASSPHRASE": "Your passphrase..."
+    "YOUR_PASSPHRASE": "Your passphrase...",
+    "OPENSSL_HELP": "To decrypt, use",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous",
+    "CATEGORY": "Category"
   },
   "PROFILE_PAGE": {
-    "SAVE_PROFILE": "Save",
-    "PROFILE_SAVED": "Saved",
     "EMAIL": "Email",
     "YOUR_EMAIL": "Your email",
     "NAME": "Name",
     "YOUR_NAME": "Your name",
     "PERSONAL_INFORMATIONS": "Personal Informations",
     "ACCESS_RIGHTS": "Access Rights",
-    "ROLES": "Roles"
+    "ROLES": "Roles",
+    "LANG": "Language",
+    "UI_LANGUAGE": "UI Language",
+    "SETTINGS": "Settings"
   },
   "ADMIN_PAGE": {
     "USERS": "Users",
@@ -71,5 +126,10 @@
     "TAG": "Tag",
     "DESCRIPTION": "Description",
     "CREATE_TAG": "Create Tag"
+  },
+  "TAG_PAGE": {
+    "LABEL": "Label",
+    "DESCRIPTION": "Description",
+    "YOUR_TAG_LABEL": "Your tag label..."
   }
 }

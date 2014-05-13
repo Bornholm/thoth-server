@@ -1,36 +1,27 @@
 <div class="row">
   <div class="col-md-12">
-    <button ng-disabled="!saveRequired" ng-class="{'btn-default': !saveRequired, 'btn-success': saveRequired}" class="btn pull-right" ng-click="save()">
-      <span ng-show="saveRequired">
-        <span translate="PROFILE_PAGE.SAVE_PROFILE"></span> <span class="glyphicon glyphicon-floppy-disk"></span>
-      </span>
-      <span ng-hide="saveRequired">
-        <span translate="PROFILE_PAGE.PROFILE_SAVED"></span> <span class="glyphicon glyphicon-ok"></span></span>
-    </button>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
     <form role="form">
-
-      <fieldset>
+      <fieldset disabled>
         <legend translate="PROFILE_PAGE.PERSONAL_INFORMATIONS"></legend>
         <div class="form-group">
-          <label for="nameInput" translate="PROFILE_PAGE.NAME"></label>
-          <input type="text" class="form-control" ng-model="user.name" id="nameInput" placeholder="{{'PROFILE_PAGE.YOUR_NAME' | translate}}">
+          <label translate="PROFILE_PAGE.NAME"></label>
+          <span class="form-control" ng-bind="user.name" placeholder="{{'PROFILE_PAGE.YOUR_NAME' | translate}}"></span>
         </div>
         <div class="form-group">
-          <label for="emailInput" translate="PROFILE_PAGE.EMAIL"></label>
-          <input type="email" class="form-control" ng-model="user.email" id="emailInput" placeholder="{{'PROFILE_PAGE.YOUR_EMAIL' | translate}}">
+          <label translate="PROFILE_PAGE.EMAIL"></label>
+          <span class="form-control" ng-bind="user.email" placeholder="{{'PROFILE_PAGE.YOUR_EMAIL' | translate}}"></span>
+        </div>
+        <div class="form-group">
+          <label translate="PROFILE_PAGE.ROLES"></label>
+          <tag-input class="form-control" ng-model="user.roles" />
         </div>
       </fieldset>
 
-      <fieldset ng-disabled="!isAdmin()">
-        <legend translate="PROFILE_PAGE.ACCESS_RIGHTS"></legend>
+      <fieldset>
+        <legend translate="PROFILE_PAGE.SETTINGS"></legend>
         <div class="form-group">
-          <label for="rolesInput" translate="PROFILE_PAGE.ROLES"></label>
-          <tag-input type="text" class="form-control" ng-model="user.roles" id="rolesInput" placeholder="{{'PROFILE_PAGE.ROLES' | translate}}" />
+          <label for="langInput" translate="PROFILE_PAGE.UI_LANGUAGE"></label>
+          <select class="form-control" ng-model="lang" id="langInput" required ng-options="l.label for l in availableLanguages track by l.key"></select>
         </div>
       </fieldset>
 

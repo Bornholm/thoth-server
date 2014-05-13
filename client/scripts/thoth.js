@@ -6,16 +6,29 @@
 
 	var Thoth = angular.module(
 		'Thoth',
-		['ngResource', 'ngCookies', 'pascalprecht.translate', 'lightRest']
+		[
+			'ngResource', 'ngCookies',
+			'pascalprecht.translate', 'lightRest',
+			'ngRoute', 'ngAnimate'
+		]
 	);
 
 	Thoth.config([
 		'$routeProvider', '$locationProvider', '$httpProvider',
-		'$translateProvider',
+		'$translateProvider', 'lightRestProvider', 'config',
 		function(
 			$routeProvider, $locationProvider, $httpProvider,
-			$translateProvider
+			$translateProvider, $lightRestProvider, config
 		) {
+
+		$translateProvider.useStaticFilesLoader({
+			prefix: 'i10n/locale-',
+			suffix: '.json'
+		});
+
+		$translateProvider.preferredLanguage(config.languages.preferred);
+		$translateProvider.fallbackLanguage(config.languages.preferred);
+		$translateProvider.useLocalStorage();
 			
 			$routeProvider.when('/login', {
 				templateUrl: 'templates/login.html',
@@ -42,63 +55,25 @@
 				controller: 'RecordCtrl'
 			});
 
-			$routeProvider.when('/role/:roleId/:action', {
-				templateUrl: 'templates/role.html',
-				controller: 'RoleCtrl'
-			});
-
-			$routeProvider.when('/role/:action', {
-				templateUrl: 'templates/role.html',
-				controller: 'RoleCtrl'
-			});
-
-			$routeProvider.when('/admin', {
-				templateUrl: 'templates/admin.html',
-				controller: 'AdminCtrl'
-			});
-
 			$routeProvider.otherwise({redirectTo: '/home'});
 
 			$routeProvider.html5Mode = false;
 
-			// Auth interceptor
+			$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+			$httpProvider.interceptors.push('errorInterceptor');
 
-			var interceptor = ['$location', '$q', function($location, $q) {
-
-				function success(response) {
-					return response;
-				}
-
-				function error(response) {
-					if(response.status === 401) {
-						$location.url('/login');
-						return $q.reject(response);
-					}else {
-						return $q.reject(response);
-					}
-				}
-	 
-				return function(promise) {
-					return promise.then(success, error);
-				}
-
-			}];
-
-			$httpProvider.responseInterceptors.push(interceptor);
-
-			$translateProvider.useStaticFilesLoader({
-				prefix: 'i10n/locale-',
-				suffix: '.json'
-			});
-
-			$translateProvider.preferredLanguage('en');
-			$translateProvider.useLocalStorage();
+			$lightRestProvider.setBaseURL(config.apiBaseURL);
 
 	}]);
 
 	Thoth.run([
-		'$rootScope', '$auth', '$location', '$window', '$notifications',
-		function($rootScope, $auth, $location, $window, $notifs) {
+		'$rootScope', '$auth',
+		'$location', '$window',
+		'$notifications', '$translate',
+		function(
+			$rootScope, $auth,
+			$location, $window,
+			$notifs, $translate) {
 
 			$rootScope.$location = $location;
 			$rootScope.$watch('$location.path()', function(newVal) {
@@ -113,15 +88,36 @@
 				
 			});
 
-			if($location.path() !== '/login') {
-				$rootScope.nextUrl = $location.url();
-			}
+			var last401Error = 0;
+			$rootScope.$on('server-error', function(evt, errorName, res) {
 
-			if ($window.location.protocol !== 'https:') {
+				// Don't spam 401 errors
+				if(res.status === 401) {
+					var now = Date.now();
+					if(now - last401Error > 2000) {
+						last401Error = now;
+					} else {
+						return;
+					}
+				}
+
 				$notifs.add(
-					"Connexion non sécurisée !",
-					"Vous accédez à cette application via une connexion non cryptée !\n" +
-					"Ceci peut éventuellement amener à une interception de vos données.",
+					'ERROR.' + errorName + '.TITLE',
+					'ERROR.' + errorName + '.DESC',
+					$notifs.DANGER
+				);
+
+				if(errorName === 'UnknownError' || res.status === 401) {
+					$location.url('/login');
+				}
+
+			});
+
+			// Warning if not HTTPS
+			if($window.location.protocol !== 'https:') {
+				$notifs.add(
+					'GLOBAL.UNENCRYPTED_CONNECTION.TITLE',
+					'GLOBAL.UNENCRYPTED_CONNECTION.DESC',
 					$notifs.DANGER,
 					true
 				);

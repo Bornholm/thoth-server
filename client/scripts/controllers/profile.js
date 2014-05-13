@@ -3,52 +3,43 @@
   "use strict";
   var angular = w.angular;
 
-  angular.module('Thoth')
-    .controller('ProfileCtrl', [
-      '$scope', '$auth', '$notifications', 
-      '$routeParams', 'lightRest',
-      function($scope, $auth, $notifs, $routeParams, $rest) {
+  var deps = [
+    '$scope', '$auth', '$notifications', 
+    'lightRest',
+    '$translate', 'config', 'pluckFilter'
+  ];
 
-        var userId = $routeParams.userId;
+  function ProfileCtrl(
+    $scope, $auth, $notifs,
+    $rest, $translate, config, pluck
+  ) {
 
-        if(userId === 'me') {
-          $scope.user = $auth.user;
-          startWatchingChange();
-        } else {
-          $scope.user = $rest.get('/api/users/:userId', {userId: userId});
-          $scope.user.then(startWatchingChange);
-        }
+    $rest
+      .get('/users/me')
+      .then(function(user) {
+        $scope.user = $auth.user = user;
+        user.roles = pluck(user.roles, 'name');
+      });
 
-        $scope.isAdmin = $auth.isAdmin;
+    $scope.lang = {
+      key: $translate.uses()
+    };
 
-        var unwatch;
-        function detectModification(newVal, oldVal) {
-          if(oldVal !== newVal) {
-            $scope.saveRequired = true;
-          }
-        };
-        
-        function startWatchingChange() {
-          unwatch = $scope.$watch(
-            'user.name + user.email + user.permissions + user.roles',
-            detectModification
-          );
-        }
+    $scope.availableLanguages = config.languages.available.map(function(l) {
+      return {key: l, label: $translate('LANG.'+l.toUpperCase())}
+    });
 
-        function saveHandler() {
-          $notifs.add('Sauvegardé !', '', $notifs.SUCCESS);
-          $scope.saveRequired = false;
-          startWatchingChange();
-        }
-
-        $scope.save = function() {
-          if(typeof unwatch === 'function') {
-            unwatch();
-          }
-          $rest.put('/api/users/:_id', $scope.user).then(saveHandler);
-        };
-
+    $scope.$watch('lang', function(lang) {
+      if(lang && lang.key) {
+        $translate.uses(lang.key);
       }
-    ]);
+    });
+
+  }
+
+  ProfileCtrl.$inject = deps;
+
+  angular.module('Thoth')
+    .controller('ProfileCtrl', ProfileCtrl);
 
 }(window))

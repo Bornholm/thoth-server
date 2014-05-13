@@ -11,8 +11,8 @@
               var auth = {};
 
               auth.ping = function() {
-                  return $rest.get('/api/auth/ping')
-                    .then($rootScope.$broadcast.bind($rootScope, 'login'));
+                return $rest.get('/auth/ping')
+                  .then($rootScope.$broadcast.bind($rootScope, 'login'));
               };
 
               auth.login = function(username, password) {
@@ -20,7 +20,7 @@
                 $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
                 var deferred = $q.defer();
                 $
-                $rest.get('/api/users/me').then(function(user) {
+                $rest.get('/users/me').then(function(user) {
                   auth.user = user;
                   $rootScope.$broadcast('login');
                   deferred.resolve(user);
@@ -30,18 +30,9 @@
               };
 
               auth.logout = function() {
-                  var encoded = w.btoa('bye:bye');
-                  $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
-                  return $http.get('/api/auth/logout');
-              };
-
-              auth.isAdmin = function() {
-                var user = auth.user;
-                if(user && user.roles) {
-                  return !!~user.roles.indexOf('admin');
-                } else {
-                  return false;
-                }
+                var encoded = w.btoa('bye:bye');
+                $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
+                return $http.get('/auth/logout');
               };
 
               return auth;

@@ -1,9 +1,23 @@
+body, html {
+  width: 100%;
+  font-family: 'Droid Sans', 'Ubuntu Sans', 'sans-serif';
+  background: url('../img/grey.png') repeat;
+}
+
 .ng-cloak {
 	display: none;
 }
 
+.align-right {
+  text-align: right;
+}
+
 .brand {
   color: #777;
+}
+
+.center {
+  text-align: center;
 }
 
 .logo.small {
@@ -15,10 +29,21 @@
 	margin-bottom: -10px;
 }
 
-body, html {
-	width: 100%;
-	font-family: 'Droid Sans', 'Ubuntu Sans', 'sans-serif';
-  background: url('../img/grey.png') repeat;
+.button-bar {
+  margin-bottom: 10px;
+}
+
+.record-item {
+  cursor: pointer;
+}
+
+.tag {
+  margin-right: 2px;
+}
+
+.tags-cell ul {
+  padding: 0;
+  margin: 0;
 }
 
 #content {

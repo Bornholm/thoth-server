@@ -1,41 +1,74 @@
-<div class="row ng-scope">
-  <div class="col-lg-12">
-    <form ng-show="showPassphraseInput" class="form-inline pull-right" role="form">
-      <div class="form-group">
-        <input type="password" ng-model="passphrase" class="form-control" id="passphraseInput" placeholder="{{'HOME_PAGE.YOUR_PASSPHRASE' | translate}}">
-      </div>
-      <a ng-click="resetPassphrase()" ng-disabled="!passphrase" download class="btn btn-default" ng-href="api/export/all?passphrase={{passphrase}}">
-        <span translate="HOME_PAGE.DOWNLOAD"></span>&nbsp;
-        <span class="glyphicon glyphicon-download"></span>
-      </a>
-    </form>
-    <button ng-hide="showPassphraseInput" class="btn pull-right btn-default" ng-click="askPassphrase()">
+<!-- Buttons bar -->
+<div class="row button-bar">
+  <div class="col-lg-12 align-right">
+    <button ng-hide="showPassphraseInput" class="btn btn-default" ng-click="askPassphrase()">
       <span translate="HOME_PAGE.DOWNLOAD_ALL"></span>&nbsp;
       <span class="glyphicon glyphicon-download"></span>
     </button>
   </div>
 </div>
+<div class="row button-bar" ng-show="showPassphraseInput">
+  <div class="col-lg-6">
+    <form class="form" role="form">
+      <div class="form-group">
+        <input type="password" ng-model="passphrase" class="form-control" id="passphraseInput" placeholder="{{'HOME_PAGE.YOUR_PASSPHRASE' | translate}}">
+      </div>
+      <a ng-click="resetPassphrase()" ng-disabled="!passphrase" target="_blank" class="btn btn-success pull-right" ng-href="api/export/all?passphrase={{passphrase}}">
+        <span translate="HOME_PAGE.DOWNLOAD"></span>&nbsp;
+        <span class="glyphicon glyphicon-download"></span>
+      </a>
+    </form>
+  </div>
+  <div class="col-lg-6">
+    <span translate="HOME_PAGE.OPENSSL_HELP"></span>
+    <pre>openssl enc -d -&lt;algorithm&gt; -nosalt -k &lt;passphrase&gt; -in &lt;encrypted_file&gt; -out &lt;output_file&gt;</pre>
+  </div>
+</div>
+
+<!-- Records -->
 <div class="row">
 	<div class="col-lg-12">
-    <div class="table-responsive">
-      <table class="table table-hover table-responsive">
+    <div class="panel panel-default table-responsive">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th>#</th>
             <th translate="HOME_PAGE.LABEL"></th>
+            <th translate="HOME_PAGE.CATEGORY"></th>
             <th translate="HOME_PAGE.TAGS"></th>
-            <th translate="HOME_PAGE.ACTIONS"></th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="record in records">
-            <td ng-bind="$index"></td>
+          <tr ng-click="viewRecord(record._id)" ng-repeat="record in records" class="record-item">
+            <td ng-bind="search.skip + $index"></td>
             <td ng-bind="record.label"></td>
-            <td ng-bind="record.tags"></td>
-            <td><a ng-href="#/record/{{record._id}}/view" translate="HOME_PAGE.ACTIONS_AVAILABLE"></a></td>
+            <td ng-bind="record.category.join('/')"></td>
+            <td class="tags-cell">
+              <ul>
+                <li class="tag label label-default" ng-repeat="tag in record.tags" ng-bind="tag"></li>
+              </ul>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <ul class="pager">
+      <li class="previous" ng-class="{disabled: search.skip === 0}">
+        <a ng-href="#/home?skip={{search.prevSkip}}&limit={{search.limit}}&search={{search.search}}">&larr; {{'HOME_PAGE.PREVIOUS' | translate}}</a>
+      </li>
+      <li class="next" ng-class="{disabled: (search.skip + search.limit) > totalRecords}">
+        <a ng-href="#/home?skip={{search.nextSkip}}&limit={{search.limit}}&search={{search.search}}">{{'HOME_PAGE.NEXT' | translate}} &rarr;</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 center">
+    <p ng-cloak>{{search.skip}}-{{min(search.skip+search.limit, totalRecords)}}/{{totalRecords}}</p>
   </div>
 </div>

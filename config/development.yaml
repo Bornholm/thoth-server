@@ -1,0 +1,4 @@
+log:
+  colorize: True
+  level: debug
+  timestamp: True
