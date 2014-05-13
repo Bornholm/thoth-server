@@ -96,6 +96,8 @@ Chaque plugin peut apporter son propre lot de commandes supplémentaires, dans s
 Production
 ----------
 
+Un script de démarrage est disponible dans `tools/thoth-initscript.sh` (testé sur Debian wheezy).
+Vous pouvez modifier la section `CONFIG` du script pour l'adapter au contexte de votre serveur.
 
 Licence
 -------

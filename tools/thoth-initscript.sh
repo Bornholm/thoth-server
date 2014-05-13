@@ -13,6 +13,8 @@
 
 # Do NOT "set -e"
 
+# ---- CONFIG ----
+
 USER=www-data
 GROUP=www-data
 LOG=/var/log/thoth/thoth.log
@@ -28,6 +30,8 @@ SCRIPT="$NODE_BIN $APP_ROOT/app.js"
 SCRIPT_ARGS=""
 PIDFILE=/var/run/$NAME.pid
 SCRIPT_NAME=/etc/init.d/thoth
+
+# ---- END CONFIG ----
 
 # Load the VERBOSE setting and other rcS variables
 . /lib/init/vars.sh
