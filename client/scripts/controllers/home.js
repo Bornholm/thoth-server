@@ -64,7 +64,7 @@
           $location.path('/record/' + recordId + '/view');
         };
 
-				$scope.tri = function(value){
+				$scope.sortHeader = function(value){
 					$scope.orderProp = value;	
 				};
 
