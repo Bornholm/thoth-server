@@ -131,5 +131,11 @@
     "LABEL": "Label",
     "DESCRIPTION": "Description",
     "YOUR_TAG_LABEL": "Your tag label..."
+  },
+  "PASSWD_GEN": {
+    "PASSWD_GEN": "Password generator",
+    "PATTERN": "Pattern",
+    "RESULTS": "Results",
+    "GENERATE": "Generate"
   }
 }

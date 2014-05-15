@@ -1,25 +1,37 @@
 <div ng-include src="'templates/buttonbar.html'" class="row button-bar"></div>
 <div class="row">
   <div class="col-lg-12">
-    <form role="form">
-      <div class="form-group">
-        <label for="labelInput" translate="RECORD_PAGE.LABEL"></label>
-        <input class="form-control" id="labelInput" type="text" ng-model="record.label" />
+
+    <div class="row">
+
+      <div class="col-lg-9">
+        <form role="form">
+          <div class="form-group">
+            <label for="labelInput" translate="RECORD_PAGE.LABEL"></label>
+            <input class="form-control" id="labelInput" type="text" ng-model="record.label" />
+          </div>
+          <div class="form-group">
+            <label for="categoryInput" translate="RECORD_PAGE.CATEGORY"></label>
+            <select id="categoryInput" class="form-control" ng-model="record.category" required ng-options="category.join('/') for category in categories track by category.toString()"></select>
+          </div>
+          <div class="form-group">
+            <label for="textInput" translate="RECORD_PAGE.TEXT"></label>
+            &nbsp;<span class="glyphicon glyphicon-lock"></span>
+            <textarea class="form-control" rows="30" id="textInput" type="text" ng-model="record.text"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="tagsInput" translate="RECORD_PAGE.TAGS"></label>
+            <tag-input id="tagsInput" class="form-control" ng-model="record.tags" tags-available="tagsAvailable | pluck:'label'" tags-unique="true"/>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="categoryInput" translate="RECORD_PAGE.CATEGORY"></label>
-        <select id="categoryInput" class="form-control" ng-model="record.category" required ng-options="category.join('/') for category in categories track by category.toString()"></select>
+
+      <div class="col-lg-3">
+        <div ng-include src="'templates/sidebar.html'"></div>
       </div>
-      <div class="form-group">
-        <label for="textInput" translate="RECORD_PAGE.TEXT"></label>
-        &nbsp;<span class="glyphicon glyphicon-lock"></span>
-        <textarea class="form-control" rows="30" id="textInput" type="text" ng-model="record.text"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="tagsInput" translate="RECORD_PAGE.TAGS"></label>
-        <tag-input id="tagsInput" class="form-control" ng-model="record.tags" tags-available="tagsAvailable | pluck:'label'" tags-unique="true"/>
-      </div>
-    </form>
+
+    </div>
+
   </div>
 </div>
 <div class="row">

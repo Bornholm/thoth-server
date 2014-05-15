@@ -127,5 +127,11 @@
     "LABEL": "Label",
     "DESCRIPTION": "Description",
     "YOUR_TAG_LABEL": "Le label de votre Tag"
+  },
+  "PASSWD_GEN": {
+    "PASSWD_GEN": "Générateur de mot de passe",
+    "PATTERN": "Motif",
+    "RESULTS": "Résultats",
+    "GENERATE": "Générer"
   }
 }
