@@ -2,14 +2,13 @@
 
 	"use strict";
 	var angular = w.angular;
-	var $ = w.$;
 
 	var dataListId = 0;
 
 	function onTagChange(evt) {
 		var $scope = this;
 		$scope.$apply(function() {
-			var input = $(evt.target);
+			var input = angular.element(evt.target);
 			var tag = input.val();
 			var dataList = $scope.dataList;
 			$scope.tags = $scope.tags || [];
@@ -68,8 +67,8 @@
 					'</tbody>' +
 					'</tbody>',
 				link: function(scope, iElement) {
-					var input = $(iElement).find('input');
-					input.keyup(onTagChange.bind(scope));
+					var input = iElement.find('input');
+					input.on('keyup', onTagChange.bind(scope));
 				},
 
 				controller: ['$scope', function($scope) {

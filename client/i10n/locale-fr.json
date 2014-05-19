@@ -75,6 +75,9 @@
     "ADD": "Ajouter"
   },
   "RECORD_PAGE": {
+    "NO_CONTENT": "Aucun contenu :(",
+    "EDIT": "Éditer",
+    "VIEW": "Voir",
     "LABEL": "Label",
     "TAGS": "Tags",
     "TEXT": "Texte",
