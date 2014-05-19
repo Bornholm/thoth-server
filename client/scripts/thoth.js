@@ -9,7 +9,7 @@
 		[
 			'ngResource', 'ngCookies',
 			'pascalprecht.translate', 'lightRest',
-			'ngRoute', 'ngAnimate'
+			'ngRoute'
 		]
 	);
 

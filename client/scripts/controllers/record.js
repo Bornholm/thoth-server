@@ -17,6 +17,8 @@
 		$timeout
 	) {
 
+		$scope.viewMode = true;
+
 		var action = $scope.action = $routeParams.action;
 		var recordId = $routeParams.recordId;
 
@@ -28,8 +30,10 @@
 				$timeout(function() {
 					$scope.$broadcast('start-watching');
 				}, 1000);
+				$scope.viewMode = false;
 				break;
 			case 'edit':
+				$scope.viewMode = false;
 			case 'view':
 				if(recordId) {
 					$rest.get('/records/:recordId', {recordId: recordId})
@@ -63,12 +67,17 @@
 			$location.path('/home');
 		}
 
+		function reload() {
+			$location.path('/record/' + $scope.record._id + '/edit');
+		};
+
 		$scope.save = function() {
 			var isNew = !('_id' in $scope.record);
 			$scope.$broadcast('stop-watching');
 			if(isNew) {
 				$rest.post('/records', $scope.record)
-					.then(saveHandler, $scope.serverErrorHandler);
+					.then(saveHandler, $scope.serverErrorHandler)
+					.then(reload);
 			} else {
 				$rest.put('/records/:_id', $scope.record)
 					.then(saveHandler, $scope.serverErrorHandler);

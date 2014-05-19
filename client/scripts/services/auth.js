@@ -19,7 +19,6 @@
                 var encoded = w.btoa(username + ':' + password);
                 $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
                 var deferred = $q.defer();
-                $
                 $rest.get('/users/me').then(function(user) {
                   auth.user = user;
                   $rootScope.$broadcast('login');

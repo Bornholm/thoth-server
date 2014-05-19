@@ -57,7 +57,7 @@
     "LOG_OUT": "Se déconnecter",
     "SEARCH": "Rechercher",
     "PROFILE": "Profil",
-    "NEW_RECORD": "Nouvel enregistrement",
+    "NEW_RECORD": "Nouveau",
     "ADMIN": "Administration",
     "RECORD_SEARCH": "Chercher des enregistrements...",
     "TOGGLE_NAV": "Afficher/Cacher la navigation"
@@ -75,6 +75,9 @@
     "ADD": "Ajouter"
   },
   "RECORD_PAGE": {
+    "NO_CONTENT": "Aucun contenu :(",
+    "EDIT": "Éditer",
+    "VIEW": "Voir",
     "LABEL": "Label",
     "TAGS": "Tags",
     "TEXT": "Texte",
@@ -127,5 +130,11 @@
     "LABEL": "Label",
     "DESCRIPTION": "Description",
     "YOUR_TAG_LABEL": "Le label de votre Tag"
+  },
+  "PASSWD_GEN": {
+    "PASSWD_GEN": "Générateur de mot de passe",
+    "PATTERN": "Motif",
+    "RESULTS": "Résultats",
+    "GENERATE": "Générer"
   }
 }

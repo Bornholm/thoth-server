@@ -64,6 +64,10 @@
           $location.path('/record/' + recordId + '/view');
         };
 
+				$scope.sortHeader = function(value){
+					$scope.orderProp = value;	
+				};
+
 		  }
     ]);
 

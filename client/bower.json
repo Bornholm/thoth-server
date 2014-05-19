@@ -1,6 +1,6 @@
 {
   "name": "thoth",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/Bornholm/thoth",
   "authors": [
     "William PETIT <william.petit@ac-dijon.fr>"
@@ -28,6 +28,6 @@
     "async": "~0.2.5",
     "momentjs": "~2.4.0",
     "angular-route": "~1.2.3",
-    "angular-animate": "~1.2.3"
+    "marked": "~0.3.2"
   }
 }

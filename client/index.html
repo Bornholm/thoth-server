@@ -6,20 +6,18 @@
     <!-- Style -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/thoth.css" rel="stylesheet">
-    <link href="css/ng-animation.css" rel="stylesheet">
   </head>
   <body>
     <ng-include ng-cloak ng-show="isNavbarVisible" src="'templates/navbar.html'" class="toggle"></ng-include>
     <div id="content" class="container" ng-cloak ng-view></div>
     <ng-include ng-cloak src="'templates/notifications.html'"></ng-include>
     <!-- Libraries -->
+    <script type="text/javascript" src="vendor/randexp.min.js"></script>
+    <script type="text/javascript" src="bower_components/marked/lib/marked.js"></script>
     <script type="text/javascript" src="bower_components/async/lib/async.js"></script>
     <script type="text/javascript" src="bower_components/lodash/lodash.js"></script>
-    <script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <!-- Modules -->
-    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-translate/angular-translate.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
@@ -33,6 +31,7 @@
     <script type="text/javascript" src="client-config.js"></script>
     <!-- Filters -->
     <script type="text/javascript" src="scripts/filters/pluck.js"></script>
+    <script type="text/javascript" src="scripts/filters/markdown.js"></script>
     <!-- Services -->
     <script type="text/javascript" src="scripts/services/auth.js"></script>
     <script type="text/javascript" src="scripts/services/notifications.js"></script>
@@ -47,5 +46,6 @@
     <script type="text/javascript" src="scripts/controllers/home.js"></script>
     <script type="text/javascript" src="scripts/controllers/record.js"></script>
     <script type="text/javascript" src="scripts/controllers/notifications.js"></script>
+    <script type="text/javascript" src="scripts/controllers/passwdgen.js"></script>
   </body>
 </html>
