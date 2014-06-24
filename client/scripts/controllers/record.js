@@ -27,6 +27,7 @@
 		switch(action) {
 			case 'new':
 				$scope.record = {};
+				$scope.record.text="### IP\n\n### SSH\n- Identifiant :\n- Mot de passe :";
 				$timeout(function() {
 					$scope.$broadcast('start-watching');
 				}, 1000);
