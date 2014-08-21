@@ -4,6 +4,14 @@ _Node API Project Bootstrap_
 
 Base de travail pour créer des projets d'applications Web orientiées API REST en NodeJs.
 
+## Modules intégrés
+
+- [Express](http://expressjs.com/) Framework d'application Web
+- [Lodash](http://lodash.com/) Librairie utilitaire pour la manipulation de données
+- [Bookshelf.js](http://bookshelfjs.org/) ORM SQL
+- [nconf](https://github.com/flatiron/nconf) Gestionnaire de configuration
+- [bunyan](https://github.com/trentm/node-bunyan) Logger au format JSON
+
 ## Démarrer avec les sources
 
 ```sh
