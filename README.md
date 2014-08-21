@@ -21,6 +21,54 @@ npm run migrate:latest
 NODE_ENV=development node server | bunyan
 ```
 
+## Créer un fichier de migration
+
+Dans un terminal
+```
+./node_modules/knex/lib/bin/cli.js migrate:make <tag>
+vi migrations/*_<tag>.js
+```
+
+migrations/*_<tag>.js
+```
+'use strict';
+
+// La méthode "up()" est utilisée pour modifier la structure de la base lors
+// du passage de script de migration lors d'une montée de version
+exports.up = function(knex, Promise) {
+
+  return Promise.all([
+
+    knex.schema.createTable('accounts', function(table) {
+
+      table.charset('utf8'); // Encodage UTF-8
+      table.string('email').unique().primary(); // Colonne 'email' avec contrainte d'unicité
+      // etc...
+    }),
+
+    knex.schema.createTable('tickets', function(table) {
+
+      table.charset('utf8'); // Encodage UTF-8
+      table.increments('id').primary(); // Colonne 'id', PK auto inc
+      //etc..
+    })
+
+  ]);
+
+};
+
+// La méthode "down()" est utilisée pour modifier la structure de la base lors d'un rollback
+exports.down = function(knex, Promise) {
+
+  return Promise.all([
+    knex.dropTable('accounts'), // On supprime simplement les tables créées dans le sens inverse
+    knex.dropTable('tickets'),
+  ]);
+
+};
+```
+Pour plus d'informations, voir la documentation de [Knex](http://knexjs.org/#Migrations)
+
 ## Licence
 
 AGPL
