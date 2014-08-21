@@ -33,6 +33,8 @@ NODE_ENV=development node server | bunyan
 
 ## Gestion de la configuration
 
+Le fichier `config/defaults.js` contient déjà quelques valeurs par défaut pour la connexion à la base de données & l'exécution du serveur Web.
+
 Les fichiers de configuration (`config/*.js`) sont chargés séquentiellement et fusionnés dans l'ordre suivant:
 
 ```
