@@ -1,6 +1,4 @@
-# N.A.P. Bootstrap
-
-Node API Project Bootstrap
+# [N.A.P.][1] Bootstrap
 
 ## Démarrer avec les sources
 
@@ -68,6 +66,10 @@ exports.down = function(knex, Promise) {
 };
 ```
 Pour plus d'informations, voir la documentation de [Knex.js](http://knexjs.org/#Migrations)
+
+## Réferences
+
+[1]: Node API Project Bootstrap
 
 ## Licence
 
