@@ -4,7 +4,7 @@ Node API Project Bootstrap
 
 ## Démarrer avec les sources
 
-```
+```sh
 # Récupération des sources
 git clone https://github.com/bornholm/nap-bootstrap.git
 cd nap-bootstrap
@@ -30,7 +30,7 @@ vi migrations/*_<tag>.js
 ```
 
 migrations/*_<tag>.js
-```
+```js
 'use strict';
 
 // La méthode "up()" est utilisée pour modifier la structure de la base lors
@@ -67,7 +67,7 @@ exports.down = function(knex, Promise) {
 
 };
 ```
-Pour plus d'informations, voir la documentation de [Knex](http://knexjs.org/#Migrations)
+Pour plus d'informations, voir la documentation de [Knex.js](http://knexjs.org/#Migrations)
 
 ## Licence
 
