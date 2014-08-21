@@ -6,7 +6,7 @@ Node API Project Bootstrap
 
 ```
 # Récupération des sources
-git clone https://github.com/bornholm/nap-bootstrapr.git
+git clone https://github.com/bornholm/nap-bootstrap.git
 cd nap-bootstrap
 
 # Installation des dépendances
