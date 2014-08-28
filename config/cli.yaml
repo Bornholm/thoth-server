@@ -1,4 +1,0 @@
-log:
-  colorize: True
-  level: info
-  timestamp: False
