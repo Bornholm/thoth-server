@@ -15,6 +15,6 @@ exports.database = {
 
 // Configuration du logger
 exports.logger = {
-  name: 'NAP Bootstrap',
+  name: 'Thoth',
   level: 'info'
 };
