@@ -1,5 +1,5 @@
-node_modules/
-ssl-test/
-logs/
-*.log
 .hmac
+*~
+*.log
+data.sqlite3
+node_modules
