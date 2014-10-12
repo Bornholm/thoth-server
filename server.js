@@ -1,6 +1,14 @@
 /* jshint node: true */
 var config = require('./lib/util/config');
 var logger = require('./lib/util/logger');
+var Promise = require('bluebird');
+
+function crash(err) {
+  logger.fatal(err, 'Unhandled Error');
+  process.exit(1);
+}
+
+Promise.onPossiblyUnhandledRejection(crash);
 
 logger.info('Starting');
 
