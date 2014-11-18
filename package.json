@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate:latest": "./node_modules/knex/lib/bin/cli.js migrate:latest"
+    "migrate:latest": "./node_modules/knex/lib/bin/cli.js migrate:latest",
+    "admin": "./bin/thoth-admin",
+    "run": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -21,8 +23,10 @@
     "body-parser": "^1.2.2",
     "bookshelf": "^0.7.4",
     "bunyan": "^0.23.1",
+    "commander": "^2.5.0",
     "cors": "^2.3.1",
     "express": "^4.3.1",
+    "inquirer": "^0.8.0",
     "knex": "^0.6.16",
     "lodash": "^2.4.1",
     "nconf": "^0.6.9",

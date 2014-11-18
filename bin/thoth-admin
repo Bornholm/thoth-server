@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var Thoth = require('../lib/thoth');
+
+process.env.NODE_ENV = 'cli';
+
+new Thoth().startCli();

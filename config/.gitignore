@@ -1,3 +1,4 @@
 *
-!defaults.json
-!development.json
+!defaults.js
+!development.js
+!production.js
