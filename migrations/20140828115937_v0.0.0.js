@@ -7,9 +7,9 @@ exports.up = function(knex, Promise) {
       table.increments();
       table.timestamps();
       table.charset('utf8');
-      table.string('name');
+      table.string('name').unique().notNullable();
       table.string('email').unique().notNullable();
-      table.json('auth').nullable();
+      table.text('password_hash', 60).nullable();
     }),
 
     knex.schema.createTable('records', function(table) {
@@ -17,7 +17,7 @@ exports.up = function(knex, Promise) {
       table.timestamps();
       table.charset('utf8');
       table.string('label').notNullable();
-      table.text('text').nullable();
+      table.text('encrypted_text').nullable();
       table.integer('user_id').references('id').inTable('users');
       table.integer('category_id').references('id').inTable('category');
     }),
@@ -43,8 +43,8 @@ exports.up = function(knex, Promise) {
       table.charset('utf8');
       table.integer('record_id').references('id').inTable('records');
       table.integer('tag_id').references('id').inTable('tag');
-    }),
-
+    })
+    
   ]);
 };
 

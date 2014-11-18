@@ -13,6 +13,11 @@ exports.database = {
   }
 };
 
+exports.encryption = {
+  algorithm: 'aes256',
+  hmacPath: '.hmac'
+};
+
 // Configuration du logger
 exports.logger = {
   name: 'Thoth',
